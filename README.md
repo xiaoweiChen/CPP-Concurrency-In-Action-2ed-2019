@@ -31,10 +31,6 @@ C++ Concurrency In Action
 
 本书为C和C++开发人员所编写。无需任何并发经验，在看本书的时候，大家都在同一“起跑线”上。
 
-## 关于作者
-
-Anthony Williams是BSI C++小组的成员，拥有10多年C++应用经验。从2001年开始，他就是BSI C++论坛版面的一个活跃分子，并且他是将just::thread这种专业级扩展，添加到C++11线程库中的开发者。
-
 ## 本书相关
 
 - 第一版github 翻译地址：https://github.com/xiaoweiChen/Cpp_Concurrency_In_Action
