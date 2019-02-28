@@ -4,7 +4,7 @@
 * [前言](content/preface-chinese.md)
 * [感谢](content/acknowledgments-chinese.md)
 * [关于本书](content/about_this_book-chinese.md)
-* [关于作者]()
+* [关于作者](content/about_the_author-chinese.md)
 * [关于封面](content/about_cover_illustration-chinese.md)
 * [第1章 你好，C++的并发世界](content/chapter1/1.0-chinese.md)
   * [1.1 何谓并发](content/chapter1/1.1-chinese.md)
