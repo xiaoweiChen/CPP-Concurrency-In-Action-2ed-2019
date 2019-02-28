@@ -15,7 +15,7 @@
 *Anthony展示了如何在实践中使用并发。*
 <p align="right"> —Roger Orr, OR/2 Limited</p>
 
-*一个有深度的、权威的C++并发标准指南。* $^{[1]}$
+*一个有深度的、权威的C++并发标准指南。* $$^{[1]}$$
 
 <p align="right"> —Neil Horlock, 瑞士信贷银行主任</p>
 
