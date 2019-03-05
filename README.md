@@ -33,6 +33,7 @@ C++ Concurrency In Action
 
 ## 本书相关
 
-- 第一版github 翻译地址：https://github.com/xiaoweiChen/Cpp_Concurrency_In_Action
+- github翻译地址：https://github.com/xiaoweiChen/CPP-Concurrency-In-Action-2ed-2019
 - gitbook 在线阅读：https://legacy.gitbook.com/book/chenxiaowei/c-concurrency-in-action-second-edition-2019
 - 本书源码下载地址：https://www.manning.com/downloads/1954
+- 第一版github 翻译地址：https://github.com/xiaoweiChen/Cpp_Concurrency_In_Action
