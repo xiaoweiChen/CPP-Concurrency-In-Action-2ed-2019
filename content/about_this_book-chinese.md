@@ -56,7 +56,7 @@ Boost线程库[2]提供的API，以及可移植到多个平台。本书中的大
 
 ## 作者在线
 
-购买*C++ Concurrency in Action*就能访问曼宁(*Manning Publications*)的私人网络论坛，在那里可以对本书做一些评论，问一些技术问题，获得作者或其他读者的帮助。为了能够访问论坛和订阅它的内容，在浏览器地址中输入www.manning.com/books/c-plus-plus-concurrency-in-action-second-edition。https://forums.manning.com/forums/about 页面将告诉你如何注册之后访问论坛，你能获得什么样的帮助，还有论坛中的一些规则。
+购买*C++ Concurrency in Action*就能访问曼宁(*Manning Publications*)的私人网络论坛，在那里可以对本书做一些评论，问一些技术问题，获得作者或其他读者的帮助。为了能够访问论坛和订阅它的内容，在浏览器地址中输入https://www.manning.com/books/c-plus-plus-concurrency-in-action-second-edition。https://forums.manning.com/forums/about 页面将告诉你如何注册之后访问论坛，你能获得什么样的帮助，还有论坛中的一些规则。
 
 曼宁保证为本书的读者提供互相交流，以及和作者交流的场所。虽然曼宁自愿维护本书的论坛，但不保证这样的场所不会收取任何的费用。所以，建议你可以尝试提一些有挑战性的问题给作者，免得这样的地方白白浪费。
 
