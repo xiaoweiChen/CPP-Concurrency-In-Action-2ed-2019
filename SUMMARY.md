@@ -17,7 +17,7 @@
   * [2.2 向线程函数传递参数](content/chapter2/2.2-chinese.md)
   * [2.3 转移线程所有权](content/chapter2/2.3-chinese.md)
   * [2.4 运行时决定线程数量](content/chapter2/2.4-chinese.md)
-  * [2.5 识别线程](content/chapter2/2.5-chinese.md)
+  * [2.5 标识线程](content/chapter2/2.5-chinese.md)
   * [2.6 本章总结](content/chapter2/2.6-chinese.md)
 * [第3章 线程间共享数据](content/chapter3/3.0-chinese.md)
   * [3.1 共享数据带来的问题](content/chapter3/3.1-chinese.md)
