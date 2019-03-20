@@ -43,7 +43,7 @@
 * [第7章 无锁并发数据结构设计](content/chapter7/7.0-chinese.md)
   * [7.1 定义和意义](content/chapter7/7.1-chinese.md)
   * [7.2 无锁数据结构的例子](content/chapter7/7.2-chinese.md)
-  * [7.3 对于设计无锁数据结构的指导建议](content/chapter7/7.3-chinese.md)
+  * [7.3 对于设计无锁数据结构的指导和建议](content/chapter7/7.3-chinese.md)
   * [7.4 本章总结](content/chapter7/7.4-chinese.md)
 * [第8章 并发代码设计](content/chapter8/8.0-chinese.md)
   * [8.1 线程间划分工作的技术](content/chapter8/8.1-chinese.md)
