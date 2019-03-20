@@ -47,7 +47,7 @@
   * [7.4 本章总结](content/chapter7/7.4-chinese.md)
 * [第8章 并发代码设计](content/chapter8/8.0-chinese.md)
   * [8.1 线程间划分工作的技术](content/chapter8/8.1-chinese.md)
-  * [8.2 如何让数据紧凑？](content/chapter8/8.2-chinese.md)
+  * [8.2 影响并发代码性能的因素](content/chapter8/8.2-chinese.md)
   * [8.3 为多线程性能设计数据结构](content/chapter8/8.3-chinese.md)
   * [8.4 设计并发代码的注意事项](content/chapter8/8.4-chinese.md)
   * [8.5 在实践中设计并发代码](content/chapter8/8.5-chinese.md)
