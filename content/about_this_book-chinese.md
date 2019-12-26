@@ -50,7 +50,7 @@
 
 写本书的时候，最新版本的g++、clang++和Microsoft Visual Studio都对C++17的标准现成库进行了实现。他们也会支持附录中的大多数语言特性，那些目前还不被支持的特性也会逐渐被支持。
 
-我的公司Software Solutions Ltd，销售C++11标准线程库的完整实现，其可以使用在一些就的编译器上，以及为新版本的clang、gcc和Microsoft Visual Studio实现的并发TS[1]。这个线程库也可以用来测试本书中的例子。
+我的公司Software Solutions Ltd，销售C++11标准线程库的完整实现，其可以使用在一些旧编译器上，以及为新版本的clang、gcc和Microsoft Visual Studio实现的并发TS[1]。这个线程库也可以用来测试本书中的例子。
 
 Boost线程库[2]提供的API，以及可移植到多个平台。本书中的大多数例子将`std::`替换为`boost::`，再`#include`引用适当的头文件，就能使用Boost线程库来运行。还有部分工具还不支持(例如`std::async`)或在Boost线程库中有着不同名字(例如：`boost::unique_future`)。
 
