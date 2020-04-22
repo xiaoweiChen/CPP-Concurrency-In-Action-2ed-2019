@@ -5,6 +5,10 @@ C++ Concurrency In Action
 - 作者：Anthony Williams
 - 译者：陈晓伟
 
+> 翻译是译者用自己的思想，换一种语言，对原作者想法的重新阐释。鉴于我的学识所限，误解和错译在所难免。如果你能买到本书的原版，且有能力阅读英文，请直接去读原文。因为与之相较，我的译文可能根部不值得一读。
+>
+> <p align="right"> — 云风，程序员修炼之道第2版译者</p>
+
 ## 本书概述
 
 作为对《C++ Concurrency in Action - SECOND EDITION》的中文翻译。
