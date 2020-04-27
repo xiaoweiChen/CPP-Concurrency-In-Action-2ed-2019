@@ -42,3 +42,4 @@ C++ Concurrency In Action
 - 本书源码下载地址：https://www.manning.com/downloads/1954
 - 第一版github 翻译地址：https://github.com/xiaoweiChen/Cpp_Concurrency_In_Action
 - 英文原版PDF：https://ru.b-ok2.org/book/3688262/d57395?dsource=recommend
+- 不错的笔记：https://github.com/downdemo/Cpp-Concurrency-in-Action-2ed
