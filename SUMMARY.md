@@ -9,7 +9,7 @@
 * [第1章 你好，C++的并发世界](content/chapter1/1.0-chinese.md)
   * [1.1 何谓并发](content/chapter1/1.1-chinese.md)
   * [1.2 为什么使用并发？](content/chapter1/1.2-chinese.md)
-  * [1.3 C++中的并发和多线程](content/chapter1/1.3-chinese.md)
+  * [1.3 并发和多线程](content/chapter1/1.3-chinese.md)
   * [1.4 开始入门](content/chapter1/1.4-chinese.md)
   * [1.5 本章总结](content/chapter1/1.5-chinese.md)
 * [第2章 线程管理](content/chapter2/2.0-chinese.md)
