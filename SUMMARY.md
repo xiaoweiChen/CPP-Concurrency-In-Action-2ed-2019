@@ -15,7 +15,7 @@
 * [第2章 线程管理](content/chapter2/2.0-chinese.md)
   * [2.1 线程的基本操作](content/chapter2/2.1-chinese.md)
   * [2.2 传递参数](content/chapter2/2.2-chinese.md)
-  * [2.3 转移线程所有权](content/chapter2/2.3-chinese.md)
+  * [2.3 转移所有权](content/chapter2/2.3-chinese.md)
   * [2.4 运行时决定线程数量](content/chapter2/2.4-chinese.md)
   * [2.5 标识线程](content/chapter2/2.5-chinese.md)
   * [2.6 本章总结](content/chapter2/2.6-chinese.md)
