@@ -13,7 +13,7 @@
   * [1.4 开始入门](content/chapter1/1.4-chinese.md)
   * [1.5 本章总结](content/chapter1/1.5-chinese.md)
 * [第2章 线程管理](content/chapter2/2.0-chinese.md)
-  * [2.1 线程管理的基础](content/chapter2/2.1-chinese.md)
+  * [2.1 线程的基本操作](content/chapter2/2.1-chinese.md)
   * [2.2 向线程函数传递参数](content/chapter2/2.2-chinese.md)
   * [2.3 转移线程所有权](content/chapter2/2.3-chinese.md)
   * [2.4 运行时决定线程数量](content/chapter2/2.4-chinese.md)
