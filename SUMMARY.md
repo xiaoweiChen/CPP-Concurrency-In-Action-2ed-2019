@@ -19,7 +19,7 @@
   * [2.4 确定线程数量](content/chapter2/2.4-chinese.md)
   * [2.5 线程标识](content/chapter2/2.5-chinese.md)
   * [2.6 本章总结](content/chapter2/2.6-chinese.md)
-* [第3章 线程间共享数据](content/chapter3/3.0-chinese.md)
+* [第3章 共享数据](content/chapter3/3.0-chinese.md)
   * [3.1 共享数据带来的问题](content/chapter3/3.1-chinese.md)
   * [3.2 使用互斥量保护共享数据](content/chapter3/3.2-chinese.md)
   * [3.3 保护共享数据的可选方式](content/chapter3/3.3-chinese.md)
