@@ -24,7 +24,7 @@
   * [3.2 使用互斥量](content/chapter3/3.2-chinese.md)
   * [3.3 保护共享数据的方式](content/chapter3/3.3-chinese.md)
   * [3.4 本章总结](content/chapter3/3.4-chinese.md)
-* [第4章 同步并发操作](content/chapter4/4.0-chinese.md)
+* [第4章 同步操作](content/chapter4/4.0-chinese.md)
   * [4.1 等待一个事件或其他条件](content/chapter4/4.1-chinese.md)
   * [4.2 使用期望等待一次性事件](content/chapter4/4.2-chinese.md)
   * [4.3 限定等待时间](content/chapter4/4.3-chinese.md)
