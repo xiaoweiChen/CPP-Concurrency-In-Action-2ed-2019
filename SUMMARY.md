@@ -28,7 +28,7 @@
   * [4.1 等待事件或条件](content/chapter4/4.1-chinese.md)
   * [4.2 使用future](content/chapter4/4.2-chinese.md)
   * [4.3 限定等待时间](content/chapter4/4.3-chinese.md)
-  * [4.4 使用同步操作简化代码](content/chapter4/4.4-chinese.md)
+  * [4.4 简化代码](content/chapter4/4.4-chinese.md)
   * [4.5 本章总结](content/chapter4/4.5-chinese.md)
 * [第5章 C++内存模型和原子类型操作](content/chapter5/5.0-chinese.md)
   * [5.1 内存模型基础](content/chapter5/5.1-chinese.md)
