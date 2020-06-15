@@ -30,7 +30,7 @@
   * [4.3 限时等待](content/chapter4/4.3-chinese.md)
   * [4.4 简化代码](content/chapter4/4.4-chinese.md)
   * [4.5 本章总结](content/chapter4/4.5-chinese.md)
-* [第5章 C++内存模型和原子类型操作](content/chapter5/5.0-chinese.md)
+* [第5章 内存模型和原子操作](content/chapter5/5.0-chinese.md)
   * [5.1 内存模型基础](content/chapter5/5.1-chinese.md)
   * [5.2 C++中的原子操作和原子类型](content/chapter5/5.2-chinese.md)
   * [5.3 同步操作和强制排序](content/chapter5/5.3-chinese.md)
