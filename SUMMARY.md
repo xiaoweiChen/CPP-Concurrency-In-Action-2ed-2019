@@ -36,7 +36,7 @@
   * [5.3 同步操作和强制排序](content/chapter5/5.3-chinese.md)
   * [5.4 本章总结](content/chapter5/5.4-chinese.md)
 * [第6章 基于锁的并发数据结构设计](content/chapter6/6.0-chinese.md)
-  * [6.1 为并发设计的意义何在？](content/chapter6/6.1-chinese.md)
+  * [6.1 并发设计的意义](content/chapter6/6.1-chinese.md)
   * [6.2 基于锁的并发数据结构](content/chapter6/6.2-chinese.md)
   * [6.3 基于锁设计更加复杂的数据结构](content/chapter6/6.3-chinese.md)
   * [6.4 本章总结](content/chapter6/6.4-chinese.md)
