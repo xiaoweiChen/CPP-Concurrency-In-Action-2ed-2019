@@ -65,7 +65,7 @@
   * [11.1 与并发相关的Bug](content/chapter11/11.1-chinese.md)
   * [11.2 定位并发Bug的技巧](content/chapter11/11.2-chinese.md)
   * [11.3 本章总结](content/chapter11/11.3-chinese.md)
-* [附录A C++11语言特性简明参考(部分)](content/appendix_A/A.0-chinese.md)
+* [附录A C++11特性简明参考(部分)](content/appendix_A/A.0-chinese.md)
   * [A.1 右值引用](content/appendix_A/A.1-chinese.md)
   * [A.2 删除函数](content/appendix_A/A.2-chinese.md)
   * [A.3 默认函数](content/appendix_A/A.3-chinese.md)
