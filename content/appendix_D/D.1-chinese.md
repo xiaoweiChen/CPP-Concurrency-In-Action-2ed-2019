@@ -104,7 +104,8 @@ template <class ToDuration, class Rep, class Period>
     constexpr ToDuration duration_cast(const duration<Rep, Period>& d);
 ```
 
-**要求**<br>
+**要求**
+
 `Rep`必须是内置数值类型，或是自定义的类数值类型。
 
 `Period`必须是`std::ratio<>`实例。
@@ -113,7 +114,7 @@ template <class ToDuration, class Rep, class Period>
 
 用来记录`dration`中时钟周期的数量。
 
-**声明**<br>
+**声明**
 
 ```c++
 typedef Rep rep;
@@ -123,7 +124,7 @@ typedef Rep rep;
 
 ### std::chrono::duration::Period 类型
 
-这个类型必须是一个`std::ratio`的特化实例，用来表示在继续时间中，1s所要记录的次数。例如，当`period`是`std::ratio<1, 50>`，`duration`变量的count()就会在N秒钟返回50N。
+这个类型必须是一个`std::ratio`特化实例，用来表示在继续时间中，1s所要记录的次数。例如，当`period`是`std::ratio<1, 50>`，`duration`变量的count()就会在N秒钟返回50N。
 
 **声明**
 
@@ -141,7 +142,7 @@ typedef Period period;
 constexpr duration() = default;
 ```
 
-**效果**<br>
+**效果**
 `duration`内部值(例如`rep`类型的值)都已初始化。
 
 ### std::chrono::duration 需要计数值的转换构造函数
@@ -155,10 +156,11 @@ template <class Rep2>;
 constexpr explicit duration(const Rep2& r);
 ```
 
-**效果**<br>
+**效果**
+
 `duration`对象的内部值会使用`static_cast<rep>(r)`进行初始化。
 
-**结果**<br>
+**结果**
 当Rep2隐式转换为Rep，Rep是浮点类型或Rep2不是浮点类型，这个构造函数才能使用。
 
 **后验条件**
@@ -178,13 +180,16 @@ template <class Rep2, class Period>
 constexpr duration(const duration<Rep2,Period2>& d);
 ```
 
-**结果**<br>
+**结果**
+
 duration对象的内部值通过`duration_cast<duration<Rep,Period>>(d).count()`初始化。
 
-**要求**<br>
+**要求**
+
 当Rep是一个浮点类或Rep2不是浮点类，且Period2是Period数的倍数(比如，ratio_divide&lt;Period2,Period&gt;::den==1)时，才能调用该重载。当一个较小的数据转换为一个较大的数据时，使用该构造函数就能避免数位截断和精度损失。
 
-**后验条件**<br>
+**后验条件**
+
 `this->count() == dutation_cast&lt;duration<Rep, Period>>(d).count()`
 
 **例子**
@@ -206,7 +211,8 @@ duration<int, ration<1, 1000000>> us<ms>;  // 合法:us.count() == 5000
 constexpr rep count() const;
 ```
 
-**返回**<br>
+**返回**
+
 返回duration的内部值，其值类型和rep一样。
 
 ### std::chrono::duration::operator+ 加法操作符
@@ -484,10 +490,12 @@ const duration<Rep1, Period1>& lhs,
 const duration<Rep2, Period2>& rhs);
 ```
 
-**要求**<br>
+**要求**
+
 `lhs`和`rhs`两种类型可以互相进行隐式转换。当两种类型无法进行隐式转换，或是可以互相转换的两个不同类型的duration类，则表达式不合理。
 
-**结果**<br>
+**结果**
+
 当`CommonDuration`和`std::common_type< duration< Rep1, Period1>, duration< Rep2, Period2>>::type`同类，那么`lhs==rhs`就会返回`CommonDuration(lhs).count()==CommonDuration(rhs).count()`。
 
 ### std::chrono::duration 不等于比较操作符
@@ -503,7 +511,8 @@ constexpr bool operator!=(
    const duration<Rep2, Period2>& rhs);
 ```
 
-**要求**<br>
+**要求**
+
 `lhs`和`rhs`两种类型可以互相进行隐式转换。当两种类型无法进行隐式转换，或是可以互相转换的两个不同类型的duration类，则表达式不合理。
 
 **返回**
@@ -522,10 +531,12 @@ constexpr bool operator<(
    const duration<Rep2, Period2>& rhs);
 ```
 
-**要求**<br>
+**要求**
+
 `lhs`和`rhs`两种类型可以互相进行隐式转换。当两种类型无法进行隐式转换，或是可以互相转换的两个不同类型的duration类，则表达式不合理。
 
-**结果**<br>
+**结果**
+
 当`CommonDuration`和`std::common_type< duration< Rep1, Period1>, duration< Rep2, Period2>>::type`同类，那么`lhs&lt;rhs`就会返回`CommonDuration(lhs).count()&lt;CommonDuration(rhs).count()`。
 
 ### std::chrono::duration 大于比较操作符
@@ -541,7 +552,8 @@ constexpr bool operator>(
    const duration<Rep2, Period2>& rhs);
 ```
 
-**要求**<br>
+**要求**
+
 `lhs`和`rhs`两种类型可以互相进行隐式转换。当两种类型无法进行隐式转换，或是可以互相转换的两个不同类型的duration类，则表达式不合理。
 
 **返回**
@@ -560,7 +572,8 @@ constexpr bool operator<=(
    const duration<Rep2, Period2>& rhs);
 ```
 
-**要求**<br>
+**要求**
+
 `lhs`和`rhs`两种类型可以互相进行隐式转换。当两种类型无法进行隐式转换，或是可以互相转换的两个不同类型的duration类，则表达式不合理。
 
 **返回**
@@ -579,7 +592,8 @@ constexpr bool operator>=(
    const duration<Rep2, Period2>& rhs);
 ```
 
-**要求**<br>
+**要求**
+
 `lhs`和`rhs`两种类型可以互相进行隐式转换。当两种类型无法进行隐式转换，或是可以互相转换的两个不同类型的duration类，则表达式不合理。
 
 **返回**
@@ -596,10 +610,12 @@ template <class ToDuration, class Rep, class Period>
 constexpr ToDuration duration_cast(const duration<Rep, Period>& d);
 ```
 
-**要求**<br>
+**要求**
+
 ToDuration必须是`std::chrono::duration`的实例。
 
-**返回**<br>
+**返回**
+
 duration类d转换为指定类型ToDuration。这种方式可以在不同尺寸和表示类型的转换中尽可能减少精度损失。
 
 ## D.1.2 std::chrono::time_point类型模板
@@ -644,7 +660,8 @@ public:
 time_point();
 ```
 
-**后验条件**<br>
+**后验条件**
+
 对于使用默认构造函数构造出的time_point对象tp，`tp.time_since_epoch() == tp::duration::zero()`。
 
 ### std::chrono::time_point 需要时间长度的构造函数
@@ -657,7 +674,8 @@ time_point();
 explicit time_point(const duration& d);
 ```
 
-**后验条件**<br>
+**后验条件**
+
 当有一个time_point对象tp，是通过duration d构造出来的(tp(d))，那么`tp.time_since_epoch() == d`。
 
 ### std::chrono::time_point 转换构造函数
@@ -671,11 +689,12 @@ template <class Duration2>
 time_point(const time_point<clock, Duration2>& t);
 ```
 
-**要求**<br>
+**要求**
+
 Duration2必须呢个隐式转换为Duration。
 
+**效果**
 
-**效果**<br>
 当`time_point(t.time_since_epoch())`存在，从t.time_since_epoch()中获取的返回值，可以隐式转换成Duration类型的对象，并且这个值可以存储在一个新的time_point对象中。
 
 (扩展阅读：[as-if准则](http://stackoverflow.com/questions/15718262/what-exactly-is-the-as-if-rule))
@@ -690,7 +709,8 @@ Duration2必须呢个隐式转换为Duration。
 duration time_since_epoch() const;
 ```
 
-**返回**<br>
+**返回**
+
 duration的值存储在*this中。
 
 ### std::chrono::time_point::operator+= 复合赋值函数
@@ -703,7 +723,8 @@ duration的值存储在*this中。
 time_point& operator+=(const duration& d);
 ```
 
-**效果**<br>
+**效果**
+
 将d的值和duration对象的值相加，存储在*this中，就如同this-&gt;internal_duration += d;
 
 **返回**
@@ -719,7 +740,8 @@ time_point& operator+=(const duration& d);
 time_point& operator-=(const duration& d);
 ```
 
-**效果**<br>
+**效果**
+
 将d的值和duration对象的值相减，存储在*this中，就如同this-&gt;internal_duration -= d;
 
 **返回**
@@ -816,7 +838,7 @@ typedef std::chrono::duration<
 
 类型为`std::ratio`类型模板，通过系统实时时钟获取当前时间点的时间。
 
-**声明**<br>
+**声明**
 
 ```c++
 typedef std::chrono::time_point&lt;std::chrono::system_clock&gt; time_point;
@@ -832,10 +854,12 @@ typedef std::chrono::time_point&lt;std::chrono::system_clock&gt; time_point;
 time_point now() noexcept;
 ```
 
-**返回**<br>
+**返回**
+
 time_point类型变量来代表当前系统实时时钟的时间。
 
-**抛出**<br>
+**抛出**
+
 当错误发生，`std::system_error`异常将会抛出。
 
 ### std::chrono::system_clock:to_time_t 静态成员函数
@@ -848,10 +872,12 @@ time_point类型变量来代表当前系统实时时钟的时间。
 time_t to_time_t(time_point const& t) noexcept;
 ```
 
-**返回**<br>
+**返回**
+
 通过对t进行舍入或截断精度，将其转化为一个time_t类型的值。
 
-**抛出**<br>
+**抛出**
+
 当错误发生，`std::system_error`异常将会抛出。
 
 ### std::chrono::system_clock::from_time_t 静态成员函数
@@ -862,15 +888,17 @@ time_t to_time_t(time_point const& t) noexcept;
 time_point from_time_t(time_t const& t) noexcept;
 ```
 
-**返回**<br>
+**返回**
+
 time_point中的值与t中的值一样。
 
-**抛出**<br>
+**抛出**
+
 当错误发生，`std::system_error`异常将会抛出。
 
 ## D.1.4 std::chrono::steady_clock类
 
-`std::chrono::steady_clock`能访问系统稳定时钟。可以通过调用`std::chrono::steady_clock::now()`获取当前的时间。设备上显示的时间，与使用`std::chrono::steady_clock::now()`获取的时间没有固定的关系。稳定时钟是无法回调的，所以在`std::chrono::steady_clock::now()`两次调用后，第二次调用获取的时间必定等于或大于第一次获得的时间。时钟以固定的速率进行计时。
+`std::chrono::steady_clock`能访问系统稳定时钟。可以通过调用`std::chrono::steady_clock::now()`获取当前的时间。设备上显示的时间，与使用`std::chrono::steady_clock::now()`获取的时间没有固定的关系。稳定时钟是无法回调的，所以在`std::chrono::steady_clock::now()`两次调用后，第二次调用获取的时间必定等于或大于第一次获得的时间。
 
 ### 类型定义
 
@@ -942,13 +970,14 @@ typedef std::chrono::time_point<std::chrono::steady_clock> time_point;
 time_point now() noexcept;
 ```
 
-**返回**<br>
+**返回**
+
 time_point表示当前系统稳定时钟的时间。
 
-**抛出**<br>
+**抛出**
 当遇到错误，会抛出`std::system_error`异常。
 
-**同步**<br>
+**同步**
 当先行调用过一次`std::chrono::steady_clock::now()`，那么下一次time_point获取的值，一定大于等于第一次获取的值。
 
 ## D.1.5 std::chrono::high_resolution_clock类定义
