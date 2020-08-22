@@ -206,14 +206,14 @@ typedef enum memory_order
 extern "C" void atomic_thread_fence(std::memory_order order);
 ```
 
-**效果**<br>
+**效果**
 插入栅栏的目的是为了保证内存序的约束性。
 
 栅栏使用`std::memory_order_release`, `std::memory_order_acq_rel`, 或 `std::memory_order_seq_cst`内存序，会同步与一些内存位置上的获取操作进行同步，如果这些获取操作要获取一个已存储的值(通过原子操作进行的存储)，就会通过栅栏进行同步。
 
 释放操作可对`std::memory_order_acquire`, `std::memory_order_acq_rel`, 或 `std::memory_order_seq_cst`进行栅栏同步，；当释放操作存储的值，在一个原子操作之前读取，那么就会通过栅栏进行同步。
 
-**抛出**<br>
+**抛出**
 无
 
 ## D.3.6 std::atomic_signal_fence函数
@@ -226,10 +226,10 @@ extern "C" void atomic_thread_fence(std::memory_order order);
 extern "C" void atomic_signal_fence(std::memory_order order);
 ```
 
-**效果**<br>
+**效果**
 根据需要的内存约束序插入一个栅栏。除非约束序应用于“操作和信号处理函数在同一线程”的情况下，否则，这个操作等价于`std::atomic_thread_fence(order)`操作。
 
-**抛出**<br>
+**抛出**
 无
 
 ## D.3.7 std::atomic_flag类
@@ -281,10 +281,10 @@ void atomic_flag_clear_explicit(
 std::atomic_flag() noexcept = default;
 ```
 
-**效果**<br>
+**效果**
 构造一个新`std::atomic_flag`对象，不过未指明状态。(薛定谔的猫？)
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::atomic_flag 使用ATOMIC_FLAG_INIT进行初始化
@@ -303,10 +303,10 @@ std::atomic_flag() noexcept = default;
 std::atomic_flag flag=ATOMIC_FLAG_INIT;
 ```
 
-**效果**<br>
+**效果**
 构造一个新`std::atomic_flag`对象，状态为clear。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**：
@@ -378,14 +378,14 @@ void clear(memory_order order = memory_order_seq_cst) volatile noexcept;
 void clear(memory_order order = memory_order_seq_cst) noexcept;
 ```
 
-**先决条件**<br>
+**先决条件**
 支持`std::memory_order_relaxed`,`std::memory_order_release`和`std::memory_order_seq_cst`中任意一个。
 
 
-**效果**<br>
+**效果**
 自动清除变量状态标识。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**:对于内存位置上的*this，这个操作属于“写”操作(存储操作)。
@@ -433,10 +433,10 @@ return flag->clear(order);
 
 模板参数BaseType必须满足下面的条件。
 
-- 具有简单的默认构造函数<br>
-- 具有简单的拷贝赋值操作<br>
-- 具有简单的析构函数<br>
-- 可以进行位比较<br>
+- 具有简单的默认构造函数
+- 具有简单的拷贝赋值操作
+- 具有简单的析构函数
+- 可以进行位比较
 
 这就意味着`std::atomic&lt;some-simple-struct&gt;`会和使用`std::atomic<some-built-in-type>`一样简单；不过对于`std::atomic<std::string>`就不同了。
 
@@ -594,12 +594,12 @@ bool atomic_compare_exchange_weak_explicit(
 atomic() noexcept;
 ```
 
-**效果**<br>
+**效果**
 使用默认初始值，构造一个新`std::atomic`实例。因对象是静态存储的，所以初始化过程也是静态的。
 
 **NOTE**:当`std::atomic`实例以非静态方式初始化的，那么其值就是不可估计的。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::atomic_init 非成员函数
@@ -615,12 +615,12 @@ template<typename BaseType>
 void atomic_init(atomic<BaseType>* p, BaseType v) noexcept;
 ```
 
-**效果**<br>
+**效果**
 将值v以非原子存储的方式，存储在*p中。调用`atomic<BaseType>`实例中的atomic_init()，这里需要实例不是默认构造出来的，或者在构造出来的时候被执行了某些操作，否则将会引发未定义行为。
 
 **NOTE**:因为存储是非原子的，对对象指针p任意的并发访问(即使是原子操作)都会引发数据竞争。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::atomic 转换构造函数
@@ -633,10 +633,10 @@ void atomic_init(atomic<BaseType>* p, BaseType v) noexcept;
 constexpr atomic(BaseType b) noexcept;
 ```
 
-**效果**<br>
+**效果**
 通过b值构造一个新的`std::atomic`对象。因对象是静态存储的，所以初始化过程也是静态的。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::atomic 转换赋值操作
@@ -667,10 +667,10 @@ bool is_lock_free() const volatile noexcept;
 bool is_lock_free() const noexcept;
 ```
 
-**返回**<br>
+**返回**
 当操作是无锁操作，那么就返回true，否则返回false。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::atomic_is_lock_free 非成员函数
@@ -704,16 +704,16 @@ BaseType load(memory_order order = memory_order_seq_cst)
 BaseType load(memory_order order = memory_order_seq_cst) const noexcept;
 ```
 
-**先决条件**<br>
+**先决条件**
 支持`std::memory_order_relaxed`、`std::memory_order_acquire`、`std::memory_order_consume`或`std::memory_order_seq_cst`内存序。
 
-**效果**<br>
+**效果**
 原子的加载已存储到*this上的值。
 
-**返回**<br>
+**返回**
 返回存储在*this上的值。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**:是对于*this内存地址原子加载的操作。
@@ -788,13 +788,13 @@ void store(BaseType new_value,memory_order order = memory_order_seq_cst)
     noexcept;
 ```
 
-**先决条件**<br>
+**先决条件**
 支持`std::memory_order_relaxed`、`std::memory_order_release`或`std::memory_order_seq_cst`内存序。
 
-**效果**<br>
+**效果**
 将new_value原子的存储到*this中。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**:是对于*this内存地址原子加载的操作。
@@ -854,13 +854,13 @@ BaseType exchange(
     volatile noexcept;
 ```
 
-**效果**<br>
+**效果**
 原子的将new_value存储在*this中，并且取出*this中已经存储的值。
 
-**返回**<br>
+**返回**
 返回*this之前的值。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**:这是对*this内存地址的原子“读-改-写”操作。
@@ -929,16 +929,16 @@ bool compare_exchange_strong(
     memory_order success_order,memory_order failure_order) noexcept;
 ```
 
-**先决条件**<br>
+**先决条件**
 failure_order不能是`std::memory_order_release`或`std::memory_order_acq_rel`内存序。
 
-**效果**<br>
+**效果**
 将存储在*this中的expected值与new_value值进行逐位对比，当相等时间new_value存储在*this中；否则，更新expected的值。
 
-**返回**<br>
+**返回**
 当new_value的值与*this中已经存在的值相同，就返回true；否则，返回false。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**:在success_order==order和failure_order==order的情况下，三个参数的重载函数与四个参数的重载函数等价。除非，order是`std::memory_order_acq_rel`时，failure_order是`std::memory_order_acquire`，且当order是`std::memory_order_release`时，failure_order是`std::memory_order_relaxed`。
@@ -986,7 +986,7 @@ bool atomic_compare_exchange_strong_explicit(
     memory_order failure_order) noexcept;
 ```
 
-**效果**<br>
+**效果**
 
 ```
 return p->compare_exchange_strong(
@@ -1015,16 +1015,16 @@ bool compare_exchange_weak(
     memory_order success_order,memory_order failure_order) noexcept;
 ```
 
-**先决条件**<br>
+**先决条件**
 failure_order不能是`std::memory_order_release`或`std::memory_order_acq_rel`内存序。
 
-**效果**<br>
+**效果**
 将存储在*this中的expected值与new_value值进行逐位对比，当相等时间new_value存储在*this中；否则，更新expected的值。
 
-**返回**<br>
+**返回**
 当new_value的值与*this中已经存在的值相同，就返回true；否则，返回false。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**:在success_order==order和failure_order==order的情况下，三个参数的重载函数与四个参数的重载函数等价。除非，order是`std::memory_order_acq_rel`时，failure_order是`std::memory_order_acquire`，且当order是`std::memory_order_release`时，failure_order是`std::memory_order_relaxed`。
@@ -1346,13 +1346,13 @@ integral-type fetch_add(
     integral-type i,memory_order order = memory_order_seq_cst) noexcept;
 ```
 
-**效果**<br>
+**效果**
 原子的查询*this中的值，将old-value+i的和存回*this。
 
-**返回**<br>
+**返回**
 返回*this之前存储的值。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**:对于*this的内存地址来说，这是一个“读-改-写”操作。
@@ -1411,13 +1411,13 @@ integral-type fetch_sub(
     integral-type i,memory_order order = memory_order_seq_cst) noexcept;
 ```
 
-**效果**<br>
+**效果**
 原子的查询*this中的值，将old-value-i的和存回*this。
 
-**返回**<br>
+**返回**
 返回*this之前存储的值。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**:对于*this的内存地址来说，这是一个“读-改-写”操作。
@@ -1476,13 +1476,13 @@ integral-type fetch_and(
     integral-type i,memory_order order = memory_order_seq_cst) noexcept;
 ```
 
-**效果**<br>
+**效果**
 原子的查询*this中的值，将old-value&i的和存回*this。
 
-**返回**<br>
+**返回**
 返回*this之前存储的值。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**:对于*this的内存地址来说，这是一个“读-改-写”操作。
@@ -1541,13 +1541,13 @@ integral-type fetch_or(
     integral-type i,memory_order order = memory_order_seq_cst) noexcept;
 ```
 
-**效果**<br>
+**效果**
 原子的查询*this中的值，将old-value|i的和存回*this。
 
-**返回**<br>
+**返回**
 返回*this之前存储的值。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**:对于*this的内存地址来说，这是一个“读-改-写”操作。
@@ -1606,13 +1606,13 @@ integral-type fetch_xor(
     integral-type i,memory_order order = memory_order_seq_cst) noexcept;
 ```
 
-**效果**<br>
+**效果**
 原子的查询*this中的值，将old-value^i的和存回*this。
 
-**返回**<br>
+**返回**
 返回*this之前存储的值。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**:对于*this的内存地址来说，这是一个“读-改-写”操作。
@@ -1965,13 +1965,13 @@ T* fetch_add(
     ptrdiff_t i,memory_order order = memory_order_seq_cst) noexcept;
 ```
 
-**效果**<br>
+**效果**
 原子的查询*this中的值，将old-value+i的和存回*this。
 
-**返回**<br>
+**返回**
 返回*this之前存储的值。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**:对于*this的内存地址来说，这是一个“读-改-写”操作。
@@ -2026,13 +2026,13 @@ T* fetch_sub(
     ptrdiff_t i,memory_order order = memory_order_seq_cst) noexcept;
 ```
 
-**效果**<br>
+**效果**
 原子的查询*this中的值，将old-value-i的和存回*this。
 
-**返回**<br>
+**返回**
 返回*this之前存储的值。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE**:对于*this的内存地址来说，这是一个“读-改-写”操作。
