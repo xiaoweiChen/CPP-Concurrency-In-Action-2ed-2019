@@ -73,13 +73,13 @@ public:
 constexpr mutex() noexcept;
 ```
 
-**效果**<br>
+**效果**
 构造一个`std::mutex`实例。
 
-**后置条件**<br>
+**后置条件**
 新构造的`std::mutex`对象是未锁的。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::mutex 析构函数
@@ -92,13 +92,13 @@ constexpr mutex() noexcept;
 ~mutex();
 ```
 
-**先决条件**<br>
+**先决条件**
 *this必须是未锁的。
 
-**效果**<br>
+**效果**
 销毁*this。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::mutex::lock 成员函数
@@ -111,16 +111,16 @@ constexpr mutex() noexcept;
 void lock();
 ```
 
-**先决条件**<br>
+**先决条件**
 *this上必须没有持有一个锁。
 
-**效果**<br>
+**效果**
 阻塞当前线程，知道*this获取锁。
 
-**后置条件**<br>
+**后置条件**
 *this被调用线程锁住。
 
-**抛出**<br>
+**抛出**
 当有错误产生，抛出`std::system_error`类型异常。
 
 ### std::mutex::try_lock 成员函数
@@ -133,16 +133,16 @@ void lock();
 bool try_lock();
 ```
 
-**先决条件**<br>
+**先决条件**
 *this上必须没有持有一个锁。
 
-**效果**<br>
+**效果**
 尝试为当前线程*this获取上的锁，失败时当前线程不会被阻塞。
 
-**返回**<br>
+**返回**
 当调用线程获取锁时，返回true。
 
-**后置条件**<br>
+**后置条件**
 当*this被调用线程锁住，则返回true。
 
 **抛出**
@@ -160,16 +160,16 @@ bool try_lock();
 void unlock();
 ```
 
-**先决条件**<br>
+**先决条件**
 *this上必须持有一个锁。
 
 **效果**<be>
 释放当前线程获取到`*this`上的锁。任意等待获取`*this`上的线程，会在该函数调用后解除阻塞。
 
-**后置条件**<br>
+**后置条件**
 调用线程不在拥有*this上的锁。
 
-**抛出**<br>
+**抛出**
 无
 
 ## D.5.2 std::recursive_mutex类
@@ -208,13 +208,13 @@ public:
 recursive_mutex() noexcept;
 ```
 
-**效果**<br>
+**效果**
 构造一个`std::recursive_mutex`实例。
 
-**后置条件**<br>
+**后置条件**
 新构造的`std::recursive_mutex`对象是未锁的。
 
-**抛出**<br>
+**抛出**
 当无法创建一个新的`std::recursive_mutex`时，抛出`std::system_error`异常。
 
 ### std::recursive_mutex 析构函数
@@ -227,13 +227,13 @@ recursive_mutex() noexcept;
 ~recursive_mutex();
 ```
 
-**先决条件**<br>
+**先决条件**
 *this必须是未锁的。
 
-**效果**<br>
+**效果**
 销毁*this。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::recursive_mutex::lock 成员函数
@@ -246,13 +246,13 @@ recursive_mutex() noexcept;
 void lock();
 ```
 
-**效果**<br>
+**效果**
 阻塞线程，直到获取*this上的锁。
 
-**先决条件**<br>
+**先决条件**
 调用线程锁住*this上的锁。当调用已经持有一个*this的锁时，锁的计数会增加1。
 
-**抛出**<br>
+**抛出**
 当有错误产生，将抛出`std::system_error`异常。
 
 ### std::recursive_mutex::try_lock 成员函数
@@ -265,13 +265,13 @@ void lock();
 bool try_lock() noexcept;
 ```
 
-**效果**<br>
+**效果**
 尝试为当前线程*this获取上的锁，失败时当前线程不会被阻塞。
 
-**返回**<br>
+**返回**
 当调用线程获取锁时，返回true；否则，返回false。
 
-**后置条件**<br>
+**后置条件**
 当*this被调用线程锁住，则返回true。
 
 **抛出**
@@ -289,16 +289,16 @@ bool try_lock() noexcept;
 void unlock();
 ```
 
-**先决条件**<br>
+**先决条件**
 *this上必须持有一个锁。
 
 **效果**<be>
 释放当前线程获取到`*this`上的锁。如果这是`*this`在当前线程上最后一个锁，那么任意等待获取`*this`上的线程，会在该函数调用后解除其中一个线程的阻塞。
 
-**后置条件**<br>
+**后置条件**
 `*this`上锁的计数会在该函数调用后减一。
 
-**抛出**<br>
+**抛出**
 无
 
 ## D.5.3 std::timed_mutex类
@@ -343,13 +343,13 @@ public:
 timed_mutex();
 ```
 
-**效果**<br>
+**效果**
 构造一个`std::timed_mutex`实例。
 
-**后置条件**<br>
+**后置条件**
 新构造一个未上锁的`std::timed_mutex`对象。
 
-**抛出**<br>
+**抛出**
 当无法创建出新的`std::timed_mutex`实例时，抛出`std::system_error`类型异常。
 
 ### std::timed_mutex 析构函数
@@ -362,13 +362,13 @@ timed_mutex();
 ~timed_mutex();
 ```
 
-**先决条件**<br>
+**先决条件**
 *this必须没有上锁。
 
-**效果**<br>
+**效果**
 销毁*this。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::timed_mutex::lock 成员函数
@@ -381,16 +381,16 @@ timed_mutex();
 void lock();
 ```
 
-**先决条件**<br>
+**先决条件**
 调用线程不能已经持有*this上的锁。
 
-**效果**<br>
+**效果**
 阻塞当前线程，直到获取到*this上的锁。
 
-**后置条件**<br>
+**后置条件**
 *this被调用线程锁住。
 
-**抛出**<br>
+**抛出**
 当有错误产生，抛出`std::system_error`类型异常。
 
 ### std::timed_mutex::try_lock 成员函数
@@ -403,19 +403,19 @@ void lock();
 bool try_lock();
 ```
 
-**先决条件**<br>
+**先决条件**
 调用线程不能已经持有*this上的锁。
 
-**效果**<br>
+**效果**
 尝试获取*this上的锁，当获取失败时，不阻塞调用线程。
 
-**返回**<br>
+**返回**
 当锁被调用线程获取，返回true；反之，返回false。
 
-**后置条件**<br>
+**后置条件**
 当函数返回为true，*this则被当前线程锁住。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE** 即使没有线程已获取*this上的锁，函数还是有可能获取不到锁(并返回false)。
@@ -432,19 +432,19 @@ bool try_lock_for(
     std::chrono::duration<Rep,Period> const& relative_time);
 ```
 
-**先决条件**<br>
+**先决条件**
 调用线程不能已经持有*this上的锁。
 
-**效果**<br>
+**效果**
 在指定的relative_time时间内，尝试获取*this上的锁。当relative_time.count()为0或负数，将会立即返回，就像调用try_lock()一样。否则，将会阻塞，直到获取锁或超过给定的relative_time的时间。
 
-**返回**<br>
+**返回**
 当锁被调用线程获取，返回true；反之，返回false。
 
-**后置条件**<br>
+**后置条件**
 当函数返回为true，*this则被当前线程锁住。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE** 即使没有线程已获取*this上的锁，函数还是有可能获取不到锁(并返回false)。线程阻塞的时长可能会长于给定的时间。逝去的时间可能是由一个稳定时钟所决定。
@@ -461,19 +461,19 @@ bool try_lock_until(
     std::chrono::time_point<Clock,Duration> const& absolute_time);
 ```
 
-**先决条件**<br>
+**先决条件**
 调用线程不能已经持有*this上的锁。
 
-**效果**<br>
+**效果**
 在指定的absolute_time时间内，尝试获取*this上的锁。当`absolute_time<=Clock::now()`时，将会立即返回，就像调用try_lock()一样。否则，将会阻塞，直到获取锁或Clock::now()返回的时间等于或超过给定的absolute_time的时间。
 
-**返回**<br>
+**返回**
 当锁被调用线程获取，返回true；反之，返回false。
 
-**后置条件**<br>
+**后置条件**
 当函数返回为true，*this则被当前线程锁住。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE** 即使没有线程已获取*this上的锁，函数还是有可能获取不到锁(并返回false)。这里不保证调用函数要阻塞多久，只有在函数返回false后，在Clock::now()返回的时间大于或等于absolute_time时，线程才会接触阻塞。
@@ -488,16 +488,16 @@ bool try_lock_until(
 void unlock();
 ```
 
-**先决条件**<br>
+**先决条件**
 调用线程已经持有*this上的锁。
 
-**效果**<br>
+**效果**
 当前线程释放`*this`上的锁。任一阻塞等待获取`*this`上的线程，将被解除阻塞。
 
-**后置条件**<br>
+**后置条件**
 *this未被调用线程上锁。
 
-**抛出**<br>
+**抛出**
 无
 
 ## D.5.4 std::recursive_timed_mutex类
@@ -544,13 +544,13 @@ public:
 recursive_timed_mutex();
 ```
 
-**效果**<br>
+**效果**
 构造一个`std::recursive_timed_mutex`实例。
 
-**后置条件**<br>
+**后置条件**
 新构造的`std::recursive_timed_mutex`实例是没有上锁的。
 
-**抛出**<br>
+**抛出**
 当无法创建一个`std::recursive_timed_mutex`实例时，抛出`std::system_error`类异常。
 
 ### std::recursive_timed_mutex 析构函数
@@ -563,13 +563,13 @@ recursive_timed_mutex();
 ~recursive_timed_mutex();
 ```
 
-**先决条件**<br>
+**先决条件**
 *this不能上锁。
 
-**效果**<br>
+**效果**
 销毁*this。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::recursive_timed_mutex::lock 成员函数
@@ -582,16 +582,16 @@ recursive_timed_mutex();
 void lock();
 ```
 
-**先决条件**<br>
+**先决条件**
 *this上的锁不能被线程调用。
 
-**效果**<br>
+**效果**
 阻塞当前线程，直到获取*this上的锁。
 
-**后置条件**<br>
+**后置条件**
 `*this`被调用线程锁住。当调用线程已经获取`*this`上的锁，那么锁的计数会再增加1。
 
-**抛出**<br>
+**抛出**
 当错误出现时，抛出`std::system_error`类型异常。
 
 ### std::recursive_timed_mutex::try_lock 成员函数
@@ -604,16 +604,16 @@ void lock();
 bool try_lock() noexcept;
 ```
 
-**效果**<br>
+**效果**
 尝试获取*this上的锁，当获取失败时，直接不阻塞线程。
 
-**返回**<br>
+**返回**
 当调用线程获取了锁，返回true，否则返回false。
 
-**后置条件**<br>
+**后置条件**
 当函数返回true，`*this`会被调用线程锁住。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE** 该函数在获取锁时，当函数返回true时，`*this`上对锁的计数会加一。如果当前线程还未获取`*this`上的锁，那么该函数在获取锁时，可能失败(并返回false)，即使没有其他线程持有`*this`上的锁。
@@ -630,16 +630,16 @@ bool try_lock_for(
     std::chrono::duration<Rep,Period> const& relative_time);
 ```
 
-**效果**<br>
+**效果**
 在指定时间relative_time内，尝试为调用线程获取*this上的锁。当relative_time.count()为0或负数时，将会立即返回，就像调用try_lock()一样。否则，调用会阻塞，直到获取相应的锁，或超出了relative_time时限时，调用线程解除阻塞。
 
-**返回**<br>
+**返回**
 当调用线程获取了锁，返回true，否则返回false。
 
-**后置条件**<br>
+**后置条件**
 当函数返回true，`*this`会被调用线程锁住。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE** 该函数在获取锁时，当函数返回true时，`*this`上对锁的计数会加一。如果当前线程还未获取`*this`上的锁，那么该函数在获取锁时，可能失败(并返回false)，即使没有其他线程持有`*this`上的锁。等待时间可能要比指定的时间长很多。逝去的时间可能由一个稳定时钟来计算。
@@ -656,16 +656,16 @@ bool try_lock_until(
     std::chrono::time_point<Clock,Duration> const& absolute_time);
 ```
 
-**效果**<br>
+**效果**
 在指定时间absolute_time内，尝试为调用线程获取*this上的锁。当absolute_time<=Clock::now()时，将会立即返回，就像调用try_lock()一样。否则，调用会阻塞，直到获取相应的锁，或Clock::now()返回的时间大于或等于absolute_time时，调用线程解除阻塞。
 
-**返回**<br>
+**返回**
 当调用线程获取了锁，返回true，否则返回false。
 
-**后置条件**<br>
+**后置条件**
 当函数返回true，`*this`会被调用线程锁住。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE** 该函数在获取锁时，当函数返回true时，`*this`上对锁的计数会加一。如果当前线程还未获取`*this`上的锁，那么该函数在获取锁时，可能失败(并返回false)，即使没有其他线程持有`*this`上的锁。这里阻塞的时间并不确定，只有当函数返回false，然后Clock::now()返回的时间大于或等于absolute_time时，调用线程将会解除阻塞。
@@ -680,13 +680,13 @@ bool try_lock_until(
 void unlock();
 ```
 
-**效果**<br>
+**效果**
 当前线程释放`*this`上的锁。当`*this`上最后一个锁被释放后，任何等待获取`*this`上的锁将会解除阻塞，不过只能解除其中一个线程的阻塞。
 
-**后置条件**<br>
+**后置条件**
 调用线程*this上锁的计数减一。
 
-**抛出**<br>
+**抛出**
 无
 
 ## D.5.5 std::lock_guard类型模板
@@ -723,13 +723,13 @@ public:
 explicit lock_guard(mutex_type& m);
 ```
 
-**效果**<br>
+**效果**
 通过引用提供的互斥量，构造一个新的`std::lock_guard`实例，并调用m.lock()。
 
-**抛出**<br>
+**抛出**
 m.lock()抛出的任何异常。
 
-**后置条件**<br>
+**后置条件**
 *this拥有m上的锁。
 
 ### std::lock_guard 获取锁的构造函数
@@ -742,16 +742,16 @@ m.lock()抛出的任何异常。
 lock_guard(mutex_type& m,std::adopt_lock_t);
 ```
 
-**先决条件**<br>
+**先决条件**
 调用线程必须拥有m上的锁。
 
-**效果**<br>
+**效果**
 调用线程通过引用提供的互斥量，以及获取m上锁的所有权，来构造一个新的`std::lock_guard`实例。
 
-**抛出**<br>
+**抛出**
 无
 
-**后置条件**<br>
+**后置条件**
 *this拥有m上的锁。
 
 ### std::lock_guard 析构函数
@@ -764,10 +764,10 @@ lock_guard(mutex_type& m,std::adopt_lock_t);
 ~lock_guard();
 ```
 
-**效果**<br>
+**效果**
 当*this被创建后，调用m.unlock()。
 
-**抛出**<br>
+**抛出**
 无
 
 ## D.5.6 std::unique_lock类型模板
@@ -840,10 +840,10 @@ public:
 unique_lock() noexcept;
 ```
 
-**效果**<br>
+**效果**
 构造一个`std::unique_lock`实例，这个新构造的实例没有相关互斥量。
 
-**后置条件**<br>
+**后置条件**
 this->mutex()==NULL, this->owns_lock()==false.
 
 ### std::unique_lock 自动上锁的构造函数
@@ -856,13 +856,13 @@ this->mutex()==NULL, this->owns_lock()==false.
 explicit unique_lock(mutex_type& m);
 ```
 
-**效果**<br>
+**效果**
 通过提供的互斥量，构造一个`std::unique_lock`实例，且调用m.lock()。
 
-**抛出**<br>
+**抛出**
 m.lock()抛出的任何异常。
 
-**后置条件**<br>
+**后置条件**
 this->owns_lock()==true, this->mutex()==&m.
 
 ### std::unique_lock 获取锁的构造函数
@@ -875,16 +875,16 @@ this->owns_lock()==true, this->mutex()==&m.
 unique_lock(mutex_type& m,std::adopt_lock_t);
 ```
 
-**先决条件**<br>
+**先决条件**
 调用线程必须持有m上的锁。
 
-**效果**<br>
+**效果**
 通过提供的互斥量和已经拥有m上的锁，构造一个`std::unique_lock`实例。
 
-**抛出**<br>
+**抛出**
 无
 
-**后置条件**<br>
+**后置条件**
 this->owns_lock()==true, this->mutex()==&m.
 
 ### std::unique_lock 递延锁的构造函数
@@ -897,13 +897,13 @@ this->owns_lock()==true, this->mutex()==&m.
 unique_lock(mutex_type& m,std::defer_lock_t) noexcept;
 ```
 
-**效果**<br>
+**效果**
 构造的`std::unique_lock`实例引用了提供的互斥量。
 
-**抛出**<br>
+**抛出**
 无
 
-**后置条件**<br>
+**后置条件**
 this->owns_lock()==false, this->mutex()==&m.
 
 ### std::unique_lock 尝试获取锁的构造函数
@@ -916,16 +916,16 @@ this->owns_lock()==false, this->mutex()==&m.
 unique_lock(mutex_type& m,std::try_to_lock_t);
 ```
 
-**先决条件**<br>
+**先决条件**
 使`std::unique_lock`实例化的Mutex类型，必须符合Loackable的需求。
 
-**效果**<br>
+**效果**
 构造的`std::unique_lock`实例引用了提供的互斥量，且调用m.try_lock()。
 
-**抛出**<br>
+**抛出**
 无
 
-**后置条件**<br>
+**后置条件**
 this->owns_lock()将返回m.try_lock()的结果，且this->mutex()==&m。
 
 ### std::unique_lock 在给定时长内尝试获取锁的构造函数
@@ -941,16 +941,16 @@ unique_lock(
     std::chrono::duration<Rep,Period> const& relative_time);
 ```
 
-**先决条件**<br>
+**先决条件**
 使`std::unique_lock`实例化的Mutex类型，必须符合TimedLockable的需求。
 
-**效果**<br>
+**效果**
 构造的`std::unique_lock`实例引用了提供的互斥量，且调用m.try_lock_for(relative_time)。
 
-**抛出**<br>
+**抛出**
 无
 
-**后置条件**<br>
+**后置条件**
 this->owns_lock()将返回m.try_lock_for()的结果，且this->mutex()==&m。
 
 ### std::unique_lock 在给定时间点内尝试获取锁的构造函数
@@ -966,16 +966,16 @@ unique_lock(
     std::chrono::time_point<Clock,Duration> const& absolute_time);
 ```
 
-**先决条件**<br>
+**先决条件**
 使`std::unique_lock`实例化的Mutex类型，必须符合TimedLockable的需求。
 
-**效果**<br>
+**效果**
 构造的`std::unique_lock`实例引用了提供的互斥量，且调用m.try_lock_until(absolute_time)。
 
-**抛出**<br>
+**抛出**
 无
 
-**后置条件**<br>
+**后置条件**
 this->owns_lock()将返回m.try_lock_until()的结果，且this->mutex()==&m。
 
 ### std::unique_lock 移动构造函数
@@ -988,16 +988,16 @@ this->owns_lock()将返回m.try_lock_until()的结果，且this->mutex()==&m。
 unique_lock(unique_lock&& other) noexcept;
 ```
 
-**先决条件**<br>
+**先决条件**
 使`std::unique_lock`实例化的Mutex类型，必须符合TimedLockable的需求。
 
-**效果**<br>
+**效果**
 构造的`std::unique_lock`实例。当other在函数调用的时候拥有互斥量上的锁，那么该锁的所有权将被转移到新构建的`std::unique_lock`对象当中去。
 
-**后置条件**<br>
+**后置条件**
 对于新构建的`std::unique_lock`对象x，x.mutex等价与在构造函数调用前的other.mutex()，并且x.owns_lock()等价于函数调用前的other.owns_lock()。在调用函数后，other.mutex()==NULL，other.owns_lock()=false。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE** `std::unique_lock`对象是不可CopyConstructible(拷贝构造)，所以这里没有拷贝构造函数，只有移动构造函数。
@@ -1012,13 +1012,13 @@ unique_lock(unique_lock&& other) noexcept;
 unique_lock& operator=(unique_lock&& other) noexcept;
 ```
 
-**效果**<br>
+**效果**
 当this->owns_lock()返回true时，调用this->unlock()。如果other拥有mutex上的锁，那么这个所将归*this所有。
 
-**后置条件**<br>
+**后置条件**
 this->mutex()等于在为进行赋值前的other.mutex()，并且this->owns_lock()的值与进行赋值操作前的other.owns_lock()相等。other.mutex()==NULL, other.owns_lock()==false。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE** `std::unique_lock`对象是不可CopyAssignable(拷贝赋值)，所以这里没有拷贝赋值函数，只有移动赋值函数。
@@ -1033,10 +1033,10 @@ this->mutex()等于在为进行赋值前的other.mutex()，并且this->owns_lock
 ~unique_lock();
 ```
 
-**效果**<br>
+**效果**
 当this->owns_lock()返回true时，调用this->mutex()->unlock()。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::unique_lock::swap 成员函数
@@ -1049,10 +1049,10 @@ this->mutex()等于在为进行赋值前的other.mutex()，并且this->owns_lock
 void swap(unique_lock& other) noexcept;
 ```
 
-**效果**<br>
+**效果**
 如果other在调用该函数前拥有互斥量上的锁，那么这个锁将归`*this`所有。如果`*this`在调用哎函数前拥有互斥量上的锁，那么这个锁将归other所有。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::unique_lock 上非成员函数swap
@@ -1065,10 +1065,10 @@ void swap(unique_lock& other) noexcept;
 void swap(unique_lock& lhs,unique_lock& rhs) noexcept;
 ```
 
-**效果**<br>
+**效果**
 lhs.swap(rhs)
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::unique_lock::lock 成员函数
@@ -1081,16 +1081,16 @@ lhs.swap(rhs)
 void lock();
 ```
 
-**先决条件**<br>
+**先决条件**
 this->mutex()!=NULL, this->owns_lock()==false.
 
-**效果**<br>
+**效果**
 调用this->mutex()->lock()。
 
-**抛出**<br>
+**抛出**
 抛出任何this->mutex()->lock()所抛出的异常。当this->mutex()==NULL，抛出`std::sytem_error`类型异常，错误码为`std::errc::operation_not_permitted`。当this->owns_lock()==true时，抛出`std::system_error`，错误码为`std::errc::resource_deadlock_would_occur`。
 
-**后置条件**<br>
+**后置条件**
 this->owns_lock()==true。
 
 ### std::unique_lock::try_lock 成员函数
@@ -1103,16 +1103,16 @@ this->owns_lock()==true。
 bool try_lock();
 ```
 
-**先决条件**<br>
+**先决条件**
 `std::unique_lock`实例化说是用的Mutex类型，必须满足Lockable需求。this->mutex()!=NULL, this->owns_lock()==false。
 
-**效果**<br>
+**效果**
 调用this->mutex()->try_lock()。
 
-**抛出**<br>
+**抛出**
 抛出任何this->mutex()->try_lock()所抛出的异常。当this->mutex()==NULL，抛出`std::sytem_error`类型异常，错误码为`std::errc::operation_not_permitted`。当this->owns_lock()==true时，抛出`std::system_error`，错误码为`std::errc::resource_deadlock_would_occur`。
 
-**后置条件**<br>
+**后置条件**
 当函数返回true时，this->ows_lock()==true，否则this->owns_lock()==false。
 
 ### std::unique_lock::unlock 成员函数
@@ -1125,13 +1125,13 @@ bool try_lock();
 void unlock();
 ```
 
-**先决条件**<br>
+**先决条件**
 this->mutex()!=NULL, this->owns_lock()==true。
 
-**抛出**<br>
+**抛出**
 抛出任何this->mutex()->unlock()所抛出的异常。当this->owns_lock()==false时，抛出`std::system_error`，错误码为`std::errc::operation_not_permitted`。
 
-**后置条件**<br>
+**后置条件**
 this->owns_lock()==false。
 
 ### std::unique_lock::try_lock_for 成员函数
@@ -1146,19 +1146,19 @@ bool try_lock_for(
     std::chrono::duration<Rep,Period> const& relative_time);
 ```
 
-**先决条件**<br>
+**先决条件**
 `std::unique_lock`实例化说是用的Mutex类型，必须满足TimedLockable需求。this->mutex()!=NULL, this->owns_lock()==false。
 
-**效果**<br>
+**效果**
 调用this->mutex()->try_lock_for(relative_time)。
 
-**返回**<br>
+**返回**
 当this->mutex()->try_lock_for()返回true，返回true，否则返回false。
 
-**抛出**<br>
+**抛出**
 抛出任何this->mutex()->try_lock_for()所抛出的异常。当this->mutex()==NULL，抛出`std::sytem_error`类型异常，错误码为`std::errc::operation_not_permitted`。当this->owns_lock()==true时，抛出`std::system_error`，错误码为`std::errc::resource_deadlock_would_occur`。
 
-**后置条件**<br>
+**后置条件**
 当函数返回true时，this->ows_lock()==true，否则this->owns_lock()==false。
 
 ### std::unique_lock::try_lock_until 成员函数
@@ -1173,19 +1173,19 @@ bool try_lock_until(
     std::chrono::time_point<Clock,Duration> const& absolute_time);
 ```
 
-**先决条件**<br>
+**先决条件**
 `std::unique_lock`实例化说是用的Mutex类型，必须满足TimedLockable需求。this->mutex()!=NULL, this->owns_lock()==false。
 
-**效果**<br>
+**效果**
 调用this->mutex()->try_lock_until(absolute_time)。
 
-**返回**<br>
+**返回**
 当this->mutex()->try_lock_for()返回true，返回true，否则返回false。
 
-**抛出**<br>
+**抛出**
 抛出任何this->mutex()->try_lock_for()所抛出的异常。当this->mutex()==NULL，抛出`std::sytem_error`类型异常，错误码为`std::errc::operation_not_permitted`。当this->owns_lock()==true时，抛出`std::system_error`，错误码为`std::errc::resource_deadlock_would_occur`。
 
-**后置条件**<br>
+**后置条件**
 当函数返回true时，this->ows_lock()==true，否则this->owns_lock()==false。
 
 ### std::unique_lock::operator bool成员函数
@@ -1198,10 +1198,10 @@ bool try_lock_until(
 explicit operator bool() const noexcept;
 ```
 
-**返回**<br>
+**返回**
 this->owns_lock()
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE** 这是一个explicit转换操作，所以当这样的操作在上下文中只能被隐式的调用，所返回的结果需要被当做一个布尔量进行使用，而非仅仅作为整型数0或1。
@@ -1216,10 +1216,10 @@ this->owns_lock()
 bool owns_lock() const noexcept;
 ```
 
-**返回**<br>
+**返回**
 当*this持有一个互斥量的锁，返回true；否则，返回false。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::unique_lock::mutex 成员函数
@@ -1232,10 +1232,10 @@ bool owns_lock() const noexcept;
 mutex_type* mutex() const noexcept;
 ```
 
-**返回**<br>
+**返回**
 当*this有相关互斥量，则返回该互斥量；否则，返回NULL。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::unique_lock::release 成员函数
@@ -1248,16 +1248,16 @@ mutex_type* mutex() const noexcept;
 mutex_type* release() noexcept;
 ```
 
-**效果**<br>
+**效果**
 将*this与相关的互斥量之间的关系解除，同时解除所有持有锁的所有权。
 
-**返回**<br>
+**返回**
 返回与*this相关的互斥量指针，如果没有相关的互斥量，则返回NULL。
 
-**后置条件**<br>
+**后置条件**
 this->mutex()==NULL, this->owns_lock()==false。
 
-**抛出**<br>
+**抛出**
 无
 
 **NOTE** 如果this->owns_lock()在调用该函数前返回true，那么调用者则有责任里解除互斥量上的锁。
@@ -1273,16 +1273,16 @@ template<typename LockableType1,typename... LockableType2>
 void lock(LockableType1& m1,LockableType2& m2...);
 ```
 
-**先决条件**<br>
+**先决条件**
 提供的可锁对象LockableType1, LockableType2...，需要满足Lockable的需求。
 
-**效果**<br>
+**效果**
 使用未指定顺序调用lock(),try_lock()获取每个可锁对象(m1, m2...)上的锁，还有unlock()成员来避免这个类型陷入死锁。
 
-**后置条件**<br>
+**后置条件**
 当前线程拥有提供的所有可锁对象上的锁。
 
-**抛出**<br>
+**抛出**
 任何lock(), try_lock()和unlock()抛出的异常。
 
 **NOTE** 如果一个异常由`std::lock`所传播开来，当可锁对象上有锁被lock()或try_lock()获取，那么unlock()会使用在这些可锁对象上。
@@ -1298,19 +1298,19 @@ template<typename LockableType1,typename... LockableType2>
 int try_lock(LockableType1& m1,LockableType2& m2...);
 ```
 
-**先决条件**<br>
+**先决条件**
 提供的可锁对象LockableType1, LockableType2...，需要满足Lockable的需求。
 
-**效果**<br>
+**效果**
 使用try_lock()尝试从提供的可锁对象m1,m2...上逐个获取锁。当锁在之前获取过，但被当前线程使用unlock()对相关可锁对象进行了释放后，try_lock()会返回false或抛出一个异常。
 
-**返回**<br>
+**返回**
 当所有锁都已获取(每个互斥量调用try_lock()返回true)，则返回-1，否则返回以0为基数的数字，其值为调用try_lock()返回false的个数。
 
-**后置条件**<br>
+**后置条件**
 当函数返回-1，当前线程获取从每个可锁对象上都获取一个锁。否则，通过该调用获取的任何锁都将被释放。
 
-**抛出**<br>
+**抛出**
 try_lock()抛出的任何异常。
 
 **NOTE** 如果一个异常由`std::try_lock`所传播开来，则通过try_lock()获取锁对象，将会调用unlock()解除对锁的持有。
@@ -1343,7 +1343,7 @@ struct once_flag
 constexpr once_flag() noexcept;
 ```
 
-**效果**<br>
+**效果**
 `std::once_flag`默认构造函数创建了一个新的`std::once_flag`实例(并包含一个状态，这个状态表示相关函数没有被调用)。因为这是一个constexpr构造函数，在构造的静态初始部分，实例是静态存储的，这样就避免了条件竞争和初始化顺序的问题。
 
 ## D.5.10 std::call_once函数模板
@@ -1357,14 +1357,14 @@ template<typename Callable,typename... Args>
 void call_once(std::once_flag& flag,Callable func,Args args...);
 ```
 
-**先决条件**<br>
+**先决条件**
 表达式`INVOKE(func,args)`提供的func和args必须是合法的。Callable和每个Args的成员都是可MoveConstructible(移动构造)。
 
-**效果**<br>
+**效果**
 在同一个`std::once_flag`对象上调用`std::call_once`是串行的。如果之前没有在同一个`std::once_flag`对象上调用过`std::call_once`，参数func(或副本)被调用，就像INVOKE(func, args),并且只有可调用的func不抛出任何异常时，调用`std::call_once`才是有效的。当有异常抛出，异常会被调用函数进行传播。如果之前在`std::once_flag`上的`std::call_once`是有效的，那么再次调用`std::call_once`将不会在调用func。
 
-**同步**<br>
+**同步**
 在`std::once_flag`上完成对`std::call_once`的调用的先决条件是，后续所有对`std::call_once`调用都在同一`std::once_flag`对象。
 
-**抛出**<br>
+**抛出**
 当效果没有达到，或任何异常由调用func而传播，则抛出`std::system_error`。
