@@ -86,4 +86,3 @@
   * [D.5 mutex头文件](content/appendix_D/D.5-chinese.md)
   * [D.6 ratio头文件](content/appendix_D/D.6-chinese.md)
   * [D.7 thread头文件](content/appendix_D/D.7-chinese.md)
-* [资源](content/resources/resource.md)
