@@ -103,13 +103,13 @@ public:
 future() noexcept;
 ```
 
-**效果**<br>
+**效果**
 构造一个新的`std::future`实例。
 
-**后置条件**<br>
+**后置条件**
 valid()返回false。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::future 移动构造函数
@@ -122,13 +122,13 @@ valid()返回false。
 future(future&& other) noexcept;
 ```
 
-**效果**<br>
+**效果**
 使用已有对象构造一个新的`std::future`对象。
 
-**后置条件**<br>
+**后置条件**
 已有对象中的异步结果，将于新的对象相关联。然后，解除已有对象和异步之间的关系。`this->valid()`返回的结果与之前已有对象`other.valid()`返回的结果相同。在调用该构造函数后，`other.valid()`将返回false。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::future 移动赋值操作
@@ -141,13 +141,13 @@ future(future&& other) noexcept;
 future(future&& other) noexcept;
 ```
 
-**效果**<br>
+**效果**
 在两个`std::future`实例中转移异步结果的状态。
 
-**后置条件**<br>
+**后置条件**
 当执行完赋值操作后，`*this.other`就与异步结果没有关系了。异步状态(如果有的话)在释放后与`*this`相关，并且在最后一次引用后，销毁该状态。`this->valid()`返回的结果与之前已有对象`other.valid()`返回的结果相同。在调用该构造函数后，`other.valid()`将返回false。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::future 析构函数
@@ -160,10 +160,10 @@ future(future&& other) noexcept;
 ~future();
 ```
 
-**效果**<br>
+**效果**
 销毁`*this`。如果这是最后一次引用与`*this`相关的异步结果，之后就会将该异步结果销毁。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::future::share 成员函数
@@ -176,13 +176,13 @@ future(future&& other) noexcept;
 shared_future<ResultType> share();
 ```
 
-**效果**<br>
+**效果**
 如同 shared_future<ResultType>(std::move(*this))。
 
-**后置条件**<br>
+**后置条件**
 当调用share()成员函数，与`*this`相关的异步结果将与新构造的`std::shared_future`实例相关。`this->valid()`将返回false。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::future::valid 成员函数
@@ -195,10 +195,10 @@ shared_future<ResultType> share();
 bool valid() const noexcept;
 ```
 
-**返回**<br>
+**返回**
 当与异步结果相关时，返回true，否则返回false。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::future::wait 成员函数
@@ -211,13 +211,13 @@ bool valid() const noexcept;
 void wait();
 ```
 
-**先决条件**<br>
+**先决条件**
 `this->valid()`将会返回true。
 
-**效果**<br>
+**效果**
 当相关状态包含延迟函数，调用延迟函数，并保存返回的结果，或将抛出的异常保存成为异步结果。否则，会阻塞到`*this`准备就绪。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::future::wait_for 成员函数
@@ -232,18 +232,18 @@ future_status wait_for(
     std::chrono::duration<Rep,Period> const& relative_time);
 ```
 
-**先决条件**<br>
+**先决条件**
 `this->valid()`将会返回true。
 
-**效果**<br>
+**效果**
 如果与`*this`相关的异步结果包含一个`std::async`调用的延迟函数(还未执行)，那么就不阻塞立即返回。否则将阻塞实例，直到与`*this`相关异步结果准备就绪，或超过给定的relative_time时长。
 
-**返回**<br>
+**返回**
 当与`*this`相关的异步结果包含一个`std::async`调用的延迟函数(还未执行)，返回`std::future_status::deferred`；当与`*this`相关的异步结果准备就绪，返回`std::future_status::ready`；当给定时间超过relative_time时，返回`std::future_status::timeout`。
 
 **NOTE**:线程阻塞的时间可能超多给定的时长。时长尽可能由一个稳定的时钟决定。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::future::wait_until 成员函数
@@ -258,18 +258,18 @@ future_status wait_until(
   std::chrono::time_point<Clock,Duration> const& absolute_time);
 ```
 
-**先决条件**<br>
+**先决条件**
 this->valid()将返回true。
 
-**效果**<br>
+**效果**
 如果与`*this`相关的异步结果包含一个`std::async`调用的延迟函数(还未执行)，那么就不阻塞立即返回。否则将阻塞实例，直到与`*this`相关异步结果准备就绪，或`Clock::now()`返回的时间大于等于absolute_time。
 
-**返回**<br>
+**返回**
 当与`*this`相关的异步结果包含一个`std::async`调用的延迟函数(还未执行)，返回`std::future_status::deferred`；当与`*this`相关的异步结果准备就绪，返回`std::future_status::ready`；`Clock::now()`返回的时间大于等于absolute_time，返回`std::future_status::timeout`。
 
 **NOTE**:这里不保证调用线程会被阻塞多久，只有函数返回`std::future_status::timeout`，然后`Clock::now()`返回的时间大于等于absolute_time的时候，线程才会解除阻塞。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::future::get 成员函数
@@ -284,18 +284,18 @@ R& future<R&>::get();
 R future<R>::get();
 ```
 
-**先决条件**<br>
+**先决条件**
 this->valid()将返回true。
 
-**效果**<br>
+**效果**
 如果*this相关状态包含一个延期函数，那么调用这个函数并返回结果，或将抛出的异常进行传播。
 
 否则，线程就要被阻塞，直到与*this相关的异步结果就绪。当结果存储了一个异常，那么就就会将存储异常抛出。否则，将会返回存储值。
 
-**返回**<br>
+**返回**
 当相关状态包含一个延期函数，那么这个延期函数的结果将被返回。否则，当ResultType为void时，就会按照常规调用返回。如果ResultType是R&(R类型的引用)，存储的引用值将会被返回。否则，存储的值将会返回。
 
-**抛出**<br>
+**抛出**
 异常由延期函数，或存储在异步结果中的异常(如果有的话)抛出。
 
 **后置条件**
@@ -355,13 +355,13 @@ public:
 shared_future() noexcept;
 ```
 
-**效果**<br>
+**效果**
 构造一个新的`std::shared_future`实例。
 
-**后置条件**<br>
+**后置条件**
 当新实例构建完成后，调用valid()将返回false。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::shared_future 移动构造函数
@@ -374,13 +374,13 @@ shared_future() noexcept;
 shared_future(shared_future&& other) noexcept;
 ```
 
-**效果**<br>
+**效果**
 构造一个新`std::shared_future`实例。
 
-**后置条件**<br>
+**后置条件**
 将other对象中关联异步结果的所有权转移到新对象中，这样other对象就没有与之相关联的异步结果了。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::shared_future 移动对应std::future对象的构造函数
@@ -393,13 +393,13 @@ shared_future(shared_future&& other) noexcept;
 shared_future(std::future<ResultType>&& other) noexcept;
 ```
 
-**效果**<br>
+**效果**
 构造一个`std::shared_future`对象。
 
-**后置条件**<br>
+**后置条件**
 将other对象中关联异步结果的所有权转移到新对象中，这样other对象就没有与之相关联的异步结果了。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::shared_future 拷贝构造函数
@@ -412,13 +412,13 @@ shared_future(std::future<ResultType>&& other) noexcept;
 shared_future(shared_future const& other);
 ```
 
-**效果**<br>
+**效果**
 构造一个`std::shared_future`对象。
 
-**后置条件**<br>
+**后置条件**
 将other对象中关联异步结果拷贝到新对象中，与other共享关联的异步结果。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::shared_future 析构函数
@@ -431,10 +431,10 @@ shared_future(shared_future const& other);
 ~shared_future();
 ```
 
-**效果**<br>
+**效果**
 将`*this`销毁。如果`*this`关联的异步结果与`std::promise`或`std::packaged_task`不再有关联，那么该函数将会切断`std::shared_future`实例与异步结果的联系，并销毁异步结果。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::shared_future::valid 成员函数
@@ -447,10 +447,10 @@ shared_future(shared_future const& other);
 bool valid() const noexcept;
 ```
 
-**返回**<br>
+**返回**
 当与异步结果相关时，返回true，否则返回false。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::shared_future::wait 成员函数
@@ -466,10 +466,10 @@ void wait() const;
 **先决条件**
 this->valid()将返回true。
 
-**效果**<br>
+**效果**
 当有多个线程调用`std::shared_future`实例上的get()和wait()时，实例会序列化的共享同一关联状态。如果关联状态包括一个延期函数，那么第一个调用get()或wait()时就会调用延期函数，并且存储返回值，或将抛出异常以异步结果的方式保存下来。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::shared_future::wait_for 成员函数
@@ -484,18 +484,18 @@ future_status wait_for(
     std::chrono::duration<Rep,Period> const& relative_time) const;
 ```
 
-**先决条件**<br>
+**先决条件**
 `this->valid()`将会返回true。
 
-**效果**<br>
+**效果**
 如果与`*this`相关的异步结果包含一个`std::async`调用的延期函数(还未执行)，那么就不阻塞立即返回。否则将阻塞实例，直到与`*this`相关异步结果准备就绪，或超过给定的relative_time时长。
 
-**返回**<br>
+**返回**
 当与`*this`相关的异步结果包含一个`std::async`调用的延迟函数(还未执行)，返回`std::future_status::deferred`；当与`*this`相关的异步结果准备就绪，返回`std::future_status::ready`；当给定时间超过relative_time时，返回`std::future_status::timeout`。
 
 **NOTE**:线程阻塞的时间可能超多给定的时长。时长尽可能由一个稳定的时钟决定。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::shared_future::wait_until 成员函数
@@ -510,18 +510,18 @@ future_status wait_until(
   std::chrono::time_point<Clock,Duration> const& absolute_time) const;
 ```
 
-**先决条件**<br>
+**先决条件**
 this->valid()将返回true。
 
-**效果**<br>
+**效果**
 如果与`*this`相关的异步结果包含一个`std::async`调用的延迟函数(还未执行)，那么就不阻塞立即返回。否则将阻塞实例，直到与`*this`相关异步结果准备就绪，或`Clock::now()`返回的时间大于等于absolute_time。
 
-**返回**<br>
+**返回**
 当与`*this`相关的异步结果包含一个`std::async`调用的延迟函数(还未执行)，返回`std::future_status::deferred`；当与`*this`相关的异步结果准备就绪，返回`std::future_status::ready`；`Clock::now()`返回的时间大于等于absolute_time，返回`std::future_status::timeout`。
 
 **NOTE**:这里不保证调用线程会被阻塞多久，只有函数返回`std::future_status::timeout`，然后`Clock::now()`返回的时间大于等于absolute_time的时候，线程才会解除阻塞。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::shared_future::get 成员函数
@@ -536,18 +536,18 @@ R& shared_future<R&>::get() const;
 R const& shared_future<R>::get() const;
 ```
 
-**先决条件**<br>
+**先决条件**
 this->valid()将返回true。
 
-**效果**<br>
+**效果**
 当有多个线程调用`std::shared_future`实例上的get()和wait()时，实例会序列化的共享同一关联状态。如果关联状态包括一个延期函数，那么第一个调用get()或wait()时就会调用延期函数，并且存储返回值，或将抛出异常以异步结果的方式保存下来。
 
 阻塞会知道*this关联的异步结果就绪后解除。当异步结果存储了一个一行，那么就会抛出这个异常。否则，返回存储的值。
 
-**返回**<br>
+**返回**
 当ResultType为void时，就会按照常规调用返回。如果ResultType是R&(R类型的引用)，存储的引用值将会被返回。否则，返回存储值的const引用。
 
-**抛出**<br>
+**抛出**
 抛出存储的异常(如果有的话)。
 
 ## D.4.3 std::packaged_task类型模板
@@ -601,10 +601,10 @@ public:
 packaged_task() noexcept;
 ```
 
-**效果**<br>
+**效果**
 不使用关联任务或异步结果来构造一个`std::packaged_task`对象。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::packaged_task 通过可调用对象构造
@@ -618,13 +618,13 @@ template<typename Callable>
 packaged_task(Callable&& func);
 ```
 
-**先决条件**<br>
+**先决条件**
 表达式`func(args...)`必须是合法的，并且在`args...`中的args-i参数，必须是`ArgTypes...`中ArgTypes-i类型的一个值。且返回值必须可转换为ResultType。
 
-**效果**<br>
+**效果**
 使用ResultType类型的关联异步结果，构造一个`std::packaged_task`对象，异步结果是未就绪的，并且Callable类型相关的任务是对func的一个拷贝。
 
-**抛出**<br>
+**抛出**
 当构造函数无法为异步结果分配出内存时，会抛出`std::bad_alloc`类型的异常。其他异常会在使用Callable类型的拷贝或移动构造过程中抛出。
 
 ### std::packaged_task 通过有分配器的可调用对象构造
@@ -639,13 +639,13 @@ packaged_task(
     std::allocator_arg_t, Allocator const& alloc,Callable&& func);
 ```
 
-**先决条件**<br>
+**先决条件**
 表达式`func(args...)`必须是合法的，并且在`args...`中的args-i参数，必须是`ArgTypes...`中ArgTypes-i类型的一个值。且返回值必须可转换为ResultType。
 
-**效果**<br>
+**效果**
 使用ResultType类型的关联异步结果，构造一个`std::packaged_task`对象，异步结果是未就绪的，并且Callable类型相关的任务是对func的一个拷贝。异步结果和任务的内存通过内存分配器alloc进行分配，或进行拷贝。
 
-**抛出**<br>
+**抛出**
 当构造函数无法为异步结果分配出内存时，会抛出`std::bad_alloc`类型的异常。其他异常会在使用Callable类型的拷贝或移动构造过程中抛出。
 
 ### std::packaged_task 移动构造函数
@@ -658,13 +658,13 @@ packaged_task(
 packaged_task(packaged_task&& other) noexcept;
 ```
 
-**效果**<br>
+**效果**
 构建一个新的`std::packaged_task`实例。
 
-**后置条件**<br>
+**后置条件**
 通过other构建新的`std::packaged_task`对象。在新对象构建完成后，other与其之前相关联的异步结果就没有任何关系了。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::packaged_task 移动赋值操作
@@ -677,10 +677,10 @@ packaged_task(packaged_task&& other) noexcept;
 packaged_task& operator=(packaged_task&& other) noexcept;
 ```
 
-**效果**<br>
+**效果**
 将other相关异步结果和任务的所有权转移到`*this`中，并且切断异步结果和任务与other对象的关联，如同`std::packaged_task(other).swap(*this)`。
 
-**后置条件**<br>
+**后置条件**
 与other相关的异步结果与任务移动转移，使*this.other无关联的异步结果。
 
 **返回**
@@ -689,7 +689,7 @@ packaged_task& operator=(packaged_task&& other) noexcept;
 *this
 ```
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::packaged_task::swap 成员函数
@@ -702,13 +702,13 @@ packaged_task& operator=(packaged_task&& other) noexcept;
 void swap(packaged_task& other) noexcept;
 ```
 
-**效果**<br>
+**效果**
 将other和*this关联的异步结果与任务进行交换。
 
-**后置条件**<br>
+**后置条件**
 将与other关联的异步结果和任务，通过调用swap的方式，与*this相交换。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::packaged_task 析构函数
@@ -721,10 +721,10 @@ void swap(packaged_task& other) noexcept;
 ~packaged_task();
 ```
 
-**效果**<br>
+**效果**
 将`*this`销毁。如果`*this`有关联的异步结果，并且结果不是一个已存储的任务或异常，那么异步结果状态将会变为就绪，伴随就绪的是一个`std::future_error`异常和错误码`std::future_errc::broken_promise`。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::packaged_task::get_future 成员函数
@@ -737,13 +737,13 @@ void swap(packaged_task& other) noexcept;
 std::future<ResultType> get_future();
 ```
 
-**先决条件**<br>
+**先决条件**
 *this具有关联异步结果。
 
-**返回**<br>
+**返回**
 一个与*this关联异构结果相关的一个`std::future`实例。
 
-**抛出**<br>
+**抛出**
 如果一个`std::future`已经通过get_future()获取了异步结果，在抛出`std::future_error`异常时，错误码是`std::future_errc::future_already_retrieved`
 
 ### std::packaged_task::reset 成员函数
@@ -756,13 +756,13 @@ std::future<ResultType> get_future();
 void reset();
 ```
 
-**先决条件**<br>
+**先决条件**
 *this具有关联的异步任务。
 
-**效果**<br>
+**效果**
 如同`*this=packaged_task(std::move(f))`，f是*this中已存储的关联任务。
 
-**抛出**<br>
+**抛出**
 如果内存不足以分配给新的异构结果，那么将会抛出`std::bad_alloc`类异常。
 
 ### std::packaged_task::valid 成员函数
@@ -775,10 +775,10 @@ void reset();
 bool valid() const noexcept;
 ```
 
-**返回**<br>
+**返回**
 当*this具有相关任务和异步结构，返回true；否则，返回false。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::packaged_task::operator() 函数调用操作
@@ -791,19 +791,19 @@ bool valid() const noexcept;
 void operator()(ArgTypes... args);
 ```
 
-**先决条件**<br>
+**先决条件**
 *this具有相关任务。
 
-**效果**<br>
+**效果**
 像`INVOKE(func,args...)`那要调用相关的函数func。如果返回征程，那么将会存储到*this相关的异步结果中。当返回结果是一个异常，将这个异常存储到*this相关的异步结果中。
 
-**后置条件**<br>
+**后置条件**
 *this相关联的异步结果状态为就绪，并且存储了一个值或异常。所有阻塞线程，在等待到异步结果的时候被解除阻塞。
 
-**抛出**<br>
+**抛出**
 当异步结果已经存储了一个值或异常，那么将抛出一个`std::future_error`异常，错误码为`std::future_errc::promise_already_satisfied`。
 
-**同步**<br>
+**同步**
 `std::future<ResultType>::get()`或`std::shared_future<ResultType>::get()`的成功调用，代表同步操作的成功，函数将会检索异步结果中的值或异常。
 
 ### std::packaged_task::make_ready_at_thread_exit 成员函数
@@ -816,19 +816,19 @@ void operator()(ArgTypes... args);
 void make_ready_at_thread_exit(ArgTypes... args);
 ```
 
-**先决条件**<br>
+**先决条件**
 *this具有相关任务。
 
-**效果**<br>
+**效果**
 像`INVOKE(func,args...)`那要调用相关的函数func。如果返回征程，那么将会存储到`*this`相关的异步结果中。当返回结果是一个异常，将这个异常存储到`*this`相关的异步结果中。当当前线程退出的时候，可调配相关异步状态为就绪。
 
-**后置条件**<br>
+**后置条件**
 *this的异步结果中已经存储了一个值或一个异常，不过在当前线程退出的时候，这个结果都是非就绪的。当当前线程退出时，阻塞等待异步结果的线程将会被解除阻塞。
 
-**抛出**<br>
+**抛出**
 当异步结果已经存储了一个值或异常，那么将抛出一个`std::future_error`异常，错误码为`std::future_errc::promise_already_satisfied`。当无关联异步状态时，抛出`std::future_error`异常，错误码为`std::future_errc::no_state`。
 
-**同步**<br>
+**同步**
 `std::future<ResultType>::get()`或`std::shared_future<ResultType>::get()`在线程上的成功调用，代表同步操作的成功，函数将会检索异步结果中的值或异常。
 
 ## D.4.4 std::promise类型模板
@@ -878,10 +878,10 @@ public:
 promise();
 ```
 
-**效果**<br>
+**效果**
 使用ResultType类型的相关异步结果来构造`std::promise`实例，不过异步结果并未就绪。
 
-**抛出**<br>
+**抛出**
 当没有足够内存为异步结果进行分配，那么将抛出`std::bad_alloc`型异常。
 
 ### std::promise 带分配器的构造函数
@@ -895,10 +895,10 @@ template<typename Allocator>
 promise(std::allocator_arg_t, Allocator const& alloc);
 ```
 
-**效果**<br>
+**效果**
 使用ResultType类型的相关异步结果来构造`std::promise`实例，不过异步结果并未就绪。异步结果的内存由alloc分配器来分配。
 
-**抛出**<br>
+**抛出**
 当分配器为异步结果分配内存时，如有抛出异常，就为该函数抛出的异常。
 
 ### std::promise 移动构造函数
@@ -911,13 +911,13 @@ promise(std::allocator_arg_t, Allocator const& alloc);
 promise(promise&& other) noexcept;
 ```
 
-**效果**<br>
+**效果**
 构造一个`std::promise`实例。
 
-**后置条件**<br>
+**后置条件**
 当使用other来构造一个新的实例，那么other中相关异构结果的所有权将转移到新创建的对象上。之后，other将无关联异步结果。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::promise 移动赋值操作符
@@ -930,19 +930,19 @@ promise(promise&& other) noexcept;
 promise& operator=(promise&& other) noexcept;
 ```
 
-**效果**<br>
+**效果**
 在other和`*this`之间进行异步结果所有权的转移。当`*this`已经有关联的异步结果，那么该异步结果的状态将会为就绪态，且伴随一个`std::future_error`类型异常，错误码为`std::future_errc::broken_promise`。
 
-**后置条件**<br>
+**后置条件**
 将other中关联的异步结果转移到*this当中。other中将无关联异步结果。
 
-**返回**<br>
+**返回**
 
 ```
 *this
 ```
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::promise::swap 成员函数
@@ -955,13 +955,13 @@ promise& operator=(promise&& other) noexcept;
 void swap(promise& other);
 ```
 
-**效果**<br>
+**效果**
 交换other和*this当中的关联异步结果。
 
-**后置条件**<br>
+**后置条件**
 当swap使用other时，other中的异步结果就会与*this中关联异步结果相交换。二者返回来亦然。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::promise 析构函数
@@ -974,10 +974,10 @@ void swap(promise& other);
 ~promise();
 ```
 
-**效果**<br>
+**效果**
 销毁`*this`。当`*this`具有关联的异步结果，并且结果中没有存储值或异常，那么结果将会置为就绪，伴随一个`std::future_error`异常，错误码为`std::future_errc::broken_promise`。
 
-**抛出**<br>
+**抛出**
 无
 
 ### std::promise::get_future 成员函数
@@ -990,13 +990,13 @@ void swap(promise& other);
 std::future<ResultType> get_future();
 ```
 
-**先决条件**<br>
+**先决条件**
 *this具有关联异步结果。
 
-**返回**<br>
+**返回**
 与*this关联异步结果关联的`std::future`实例。
 
-**抛出**<br>
+**抛出**
 当`std::future`已经通过get_future()获取过了，将会抛出一个`std::future_error`类型异常，伴随的错误码为`std::future_errc::future_already_retrieved`。
 
 ### std::promise::set_value 成员函数
@@ -1012,19 +1012,19 @@ void promise<R>::set_value(R const& r);
 void promise<R>::set_value(R&& r);
 ```
 
-**先决条件**<br>
+**先决条件**
 *this具有关联异步结果。
 
-**效果**<br>
+**效果**
 当ResultType不是void型，就存储r到*this相关的异步结果当中。
 
-**后置条件**<br>
+**后置条件**
 *this相关的异步结果的状态为就绪，且将值存入。任意等待异步结果的阻塞线程将解除阻塞。
 
-**抛出**<br>
+**抛出**
 当异步结果已经存有一个值或一个异常，那么将抛出`std::future_error`型异常，伴随错误码为`std::future_errc::promise_already_satisfied`。r的拷贝构造或移动构造抛出的异常，即为本函数抛出的异常。
 
-**同步**<br>
+**同步**
 并发调用set_value()和set_exception()的线程将被序列化。要想成功的调用set_exception()，需要在之前调用`std::future<Result-Type>::get()`或`std::shared_future<ResultType>::get()`，这两个函数将会查找已存储的异常。
 
 ### std::promise::set_value_at_thread_exit 成员函数
@@ -1040,19 +1040,19 @@ void promise<R>::set_value_at_thread_exit(R const& r);
 void promise<R>::set_value_at_thread_exit(R&& r);
 ```
 
-**先决条件**<br>
+**先决条件**
 *this具有关联异步结果。
 
-**效果**<br>
+**效果**
 当ResultType不是void型，就存储r到*this相关的异步结果当中。标记异步结果为“已存储值”。当前线程退出时，会安排相关异步结果的状态为就绪。
 
-**后置条件**<br>
+**后置条件**
 将值存入*this相关的异步结果，且直到当前线程退出时，异步结果状态被置为就绪。任何等待异步结果的阻塞线程将解除阻塞。
 
-**抛出**<br>
+**抛出**
 当异步结果已经存有一个值或一个异常，那么将抛出`std::future_error`型异常，伴随错误码为`std::future_errc::promise_already_satisfied`。r的拷贝构造或移动构造抛出的异常，即为本函数抛出的异常。
 
-**同步**<br>
+**同步**
 并发调用set_value(), set_value_at_thread_exit(), set_exception()和set_exception_at_thread_exit()的线程将被序列化。要想成功的调用set_exception()，需要在之前调用`std::future<Result-Type>::get()`或`std::shared_future<ResultType>::get()`，这两个函数将会查找已存储的异常。
 
 ### std::promise::set_exception 成员函数
@@ -1065,19 +1065,19 @@ void promise<R>::set_value_at_thread_exit(R&& r);
 void set_exception(std::exception_ptr e);
 ```
 
-**先决条件**<br>
+**先决条件**
 *this具有关联异步结果。(bool)e为true。
 
-**效果**<br>
+**效果**
 将e存储到*this相关的异步结果中。
 
-**后置条件**<br>
+**后置条件**
 在存储异常后，*this相关的异步结果的状态将置为继续。任何等待异步结果的阻塞线程将解除阻塞。
 
-**抛出**<br>
+**抛出**
 当异步结果已经存有一个值或一个异常，那么将抛出`std::future_error`型异常，伴随错误码为`std::future_errc::promise_already_satisfied`。
 
-**同步**<br>
+**同步**
 并发调用set_value()和set_exception()的线程将被序列化。要想成功的调用set_exception()，需要在之前调用`std::future<Result-Type>::get()`或`std::shared_future<ResultType>::get()`，这两个函数将会查找已存储的异常。
 
 ### std::promise::set_exception_at_thread_exit 成员函数
@@ -1090,19 +1090,19 @@ void set_exception(std::exception_ptr e);
 void set_exception_at_thread_exit(std::exception_ptr e);
 ```
 
-**先决条件**<br>
+**先决条件**
 *this具有关联异步结果。(bool)e为true。
 
-**效果**<br>
+**效果**
 将e存储到*this相关的异步结果中。标记异步结果为“已存储值”。当前线程退出时，会安排相关异步结果的状态为就绪。
 
-**后置条件**<br>
+**后置条件**
 将值存入*this相关的异步结果，且直到当前线程退出时，异步结果状态被置为就绪。任何等待异步结果的阻塞线程将解除阻塞。
 
-**抛出**<br>
+**抛出**
 当异步结果已经存有一个值或一个异常，那么将抛出`std::future_error`型异常，伴随错误码为`std::future_errc::promise_already_satisfied`。
 
-**同步**<br>
+**同步**
 并发调用set_value(), set_value_at_thread_exit(), set_exception()和set_exception_at_thread_exit()的线程将被序列化。要想成功的调用set_exception()，需要在之前调用`std::future<Result-Type>::get()`或`std::shared_future<ResultType>::get()`，这两个函数将会查找已存储的异常。
 
 ## D.4.5 std::async函数模板
@@ -1126,10 +1126,10 @@ future<result_of<Callable(Args...)>::type>
 async(launch policy,Callable&& func,Args&& ... args);
 ```
 
-**先决条件**<br>
+**先决条件**
 表达式`INVOKE(func,args)`能都为func提供合法的值和args。Callable和Args的所有成员都可MoveConstructible(可移动构造)。
 
-**效果**<br>
+**效果**
 在内部存储中拷贝构造`func`和`arg...`(分别使用fff和xyz...进行表示)。
 
 当policy是`std::launch::async`,运行`INVOKE(fff,xyz...)`在所在线程上。当这个线程完成时，返回的`std::future`状态将会为就绪态，并且之后会返回对应的值或异常(由调用函数抛出)。析构函数会等待返回的`std::future`相关异步状态为就绪时，才解除阻塞。
@@ -1142,8 +1142,8 @@ async(launch policy,Callable&& func,Args&& ... args);
 
 在所有的情况下，`std::async`调用都会直接返回。
 
-**同步**<br>
+**同步**
 完成函数调用的先行条件是，需要通过调用`std::future`和`std::shared_future`实例的wait(),get(),wait_for()或wait_until()，返回的对象与`std::async`返回的`std::future`对象关联的状态相同才算成功。就`std::launch::async`这个policy来说，在完成线程上的函数前，也需要先行对上面的函数调用后，成功的返回才行。
 
-**抛出**<br>
+**抛出**
 当内部存储无法分配所需的空间，将抛出`std::bad_alloc`类型异常；否则，当效果没有达到，或任何异常在构造fff和xyz...发生时，抛出`std::future_error`异常。
