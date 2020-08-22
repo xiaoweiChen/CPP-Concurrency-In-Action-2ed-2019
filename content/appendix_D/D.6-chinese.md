@@ -78,10 +78,10 @@ public:
 };
 ```
 
-**要求**<br>
+**要求**
 D不能为0。
 
-**描述**<br>
+**描述**
 num和den分别为分子和分母，构造分数N/D。den总是正数。当N和D的符号相同，那么num为正数；否则num为负数。
 
 **例子**
@@ -104,10 +104,10 @@ template <class R1, class R2>
 using ratio_add = std::ratio<see below>;
 ```
 
-**先决条件**<br>
+**先决条件**
 R1和R2必须使用`std::ratio`进行初始化。
 
-**效果**<br>
+**效果**
 ratio_add<R1, R2>被定义为一个别名，如果两数可以计算，且无溢出，该类型可以表示两个`std::ratio`对象R1和R2的和。如果计算出来的结果溢出了，那么程序里面就有问题了。在算术溢出的情况下，`std::ratio_add<R1, R2>`应该应该与`std::ratio<R1::num * R2::den + R2::num * R1::den, R1::den * R2::den>`相同。
 
 **例子**
@@ -131,10 +131,10 @@ template <class R1, class R2>
 using ratio_subtract = std::ratio<see below>;
 ```
 
-**先决条件**<br>
+**先决条件**
 R1和R2必须使用`std::ratio`进行初始化。
 
-**效果**<br>
+**效果**
 ratio_add<R1, R2>被定义为一个别名，如果两数可以计算，且无溢出，该类型可以表示两个`std::ratio`对象R1和R2的和。如果计算出来的结果溢出了，那么程序里面就有问题了。在算术溢出的情况下，`std::ratio_subtract<R1, R2>`应该应该与`std::ratio<R1::num * R2::den - R2::num * R1::den, R1::den * R2::den>`相同。
 
 **例子**
@@ -158,10 +158,10 @@ template <class R1, class R2>
 using ratio_multiply = std::ratio<see below>;
 ```
 
-**先决条件**<br>
+**先决条件**
 R1和R2必须使用`std::ratio`进行初始化。
 
-**效果**<br>
+**效果**
 ratio_add<R1, R2>被定义为一个别名，如果两数可以计算，且无溢出，该类型可以表示两个`std::ratio`对象R1和R2的和。如果计算出来的结果溢出了，那么程序里面就有问题了。在算术溢出的情况下，`std::ratio_multiply<R1, R2>`应该应该与`std::ratio<R1::num * R2::num, R1::den * R2::den>`相同。
 
 **例子**
@@ -185,10 +185,10 @@ template <class R1, class R2>
 using ratio_multiply = std::ratio<see below>;
 ```
 
-**先决条件**<br>
+**先决条件**
 R1和R2必须使用`std::ratio`进行初始化。
 
-**效果**<br>
+**效果**
 ratio_add<R1, R2>被定义为一个别名，如果两数可以计算，且无溢出，该类型可以表示两个`std::ratio`对象R1和R2的和。如果计算出来的结果溢出了，那么程序里面就有问题了。在算术溢出的情况下，`std::ratio_multiply<R1, R2>`应该应该与`std::ratio<R1::num * R2::num * R2::den, R1::den * R2::den>`相同。
 
 **例子**
@@ -215,7 +215,7 @@ class ratio_equal:
 {};
 ```
 
-**先决条件**<br>
+**先决条件**
 R1和R2必须使用`std::ratio`进行初始化。
 
 **例子**
@@ -240,7 +240,7 @@ class ratio_not_equal:
 {};
 ```
 
-**先决条件**<br>
+**先决条件**
 R1和R2必须使用`std::ratio`进行初始化。
 
 **例子**
@@ -265,10 +265,10 @@ class ratio_less:
 {};
 ```
 
-**先决条件**<br>
+**先决条件**
 R1和R2必须使用`std::ratio`进行初始化。
 
-**效果**<br>
+**效果**
 std::ratio_less<R1,R2>可通过`std::integral_constant<bool, value >`导出，这里value为`(R1::num*R2::den) < (R2::num*R1::den)`。如果有可能，需要实现使用一种机制来避免计算结果已出。当溢出发生，那么程序中就肯定有错误。
 
 **例子**
@@ -297,7 +297,7 @@ class ratio_greater:
 {};
 ```
 
-**先决条件**<br>
+**先决条件**
 R1和R2必须使用`std::ratio`进行初始化。
 
 ## D.6.10 std::ratio_less_equal类型模板
@@ -313,7 +313,7 @@ class ratio_less_equal:
 {};
 ```
 
-**先决条件**<br>
+**先决条件**
 R1和R2必须使用`std::ratio`进行初始化。
 
 ## D.6.11 std::ratio_greater_equal类型模板
@@ -329,5 +329,5 @@ class ratio_greater_equal:
 {};
 ```
 
-**先决条件**<br>
+**先决条件**
 R1和R2必须使用`std::ratio`进行初始化。
