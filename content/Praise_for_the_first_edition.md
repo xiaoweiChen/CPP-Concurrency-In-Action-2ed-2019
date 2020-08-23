@@ -15,11 +15,11 @@
 展示了如何使用并发。
 <p align="right"> —Roger Orr, OR/2 Limited</p>
 
-有深度，并其权威的C++并发标准指南。
+有深度，且权威的C++并发标准指南。
 
 <p align="right"> —Neil Horlock, 瑞士信贷银行主任</p>
 
-C++开发者应该去认真的看看这本书。
+C++开发者应该去认真的看这本书。
 
 <p align="right"> —Dr. Jamie Allsop, 研发总监</p>
 
