@@ -23,13 +23,12 @@
   
   "pdf": {
     "pageNumbers": false,
-    "fontSize": 30,
     "paperSize": "a4",
     "margin": {
-      "right": 30,
-      "left": 30,
-      "top": 30,
-      "bottom": 50
+      "right": 10,
+      "left": 10,
+      "top": 10,
+      "bottom": 20
     }
   }
 }
